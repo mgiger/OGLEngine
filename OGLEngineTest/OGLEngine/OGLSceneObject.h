@@ -10,8 +10,8 @@
 
 @property (nonatomic, assign)	BOOL				visible;
 @property (nonatomic, assign)	BOOL				hasGeometry;
-@property (nonatomic, assign)	CGCube				bbox;
-@property (nonatomic, assign)	CGFloat4x4			transform;
+@property (nonatomic, assign)	OGLCube				bbox;
+@property (nonatomic, assign)	OGLFloat4x4			transform;
 @property (nonatomic, assign)	CGRect				bounds;
 @property (nonatomic, strong)	NSMutableArray*		children;
 @property (nonatomic, copy)		TapGestureBlock		tapEventHandler;
@@ -24,15 +24,15 @@
 - (void)removeChild:(OGLSceneObject*)child;
 - (void)removeAllChildren;
 
-- (void)intersectBounds:(CGRect)touchArea withXForm:(CGFloat4x4)xform intoArray:(NSMutableArray*)array;
-- (void)rayIntersect:(CGRay)r hitList:(NSMutableArray*)hits xform:(CGFloat4x4)xform;
+- (void)intersectBounds:(CGRect)touchArea withXForm:(OGLFloat4x4)xform intoArray:(NSMutableArray*)array;
+- (void)rayIntersect:(OGLRay)r hitList:(NSMutableArray*)hits xform:(OGLFloat4x4)xform;
 
 - (OGLSceneObject*)handleTap:(UITapGestureRecognizer*)gesture;
 - (OGLSceneObject*)handleDoubleTap:(UITapGestureRecognizer*)gesture;
 - (OGLSceneObject*)handlePan:(UIPanGestureRecognizer*)gesture;
 - (OGLSceneObject*)handlePinch:(UIPinchGestureRecognizer*)gesture;
 
-- (CGFloat4x4)rotationlessTransform;
+- (OGLFloat4x4)rotationlessTransform;
 - (void)render:(OGLRenderInfo*)info;
 
 @end
@@ -40,8 +40,8 @@
 @interface OGLSceneObjectSelWrapper : NSObject
 
 @property (nonatomic, strong)	OGLSceneObject*	object;
-@property (nonatomic, assign)	CGFloat4x4		transform;
+@property (nonatomic, assign)	OGLFloat4x4		transform;
 
-+ (OGLSceneObjectSelWrapper*)wrapperWithObject:(OGLSceneObject*)obj withXForm:(CGFloat4x4)xform;
++ (OGLSceneObjectSelWrapper*)wrapperWithObject:(OGLSceneObject*)obj withXForm:(OGLFloat4x4)xform;
 
 @end

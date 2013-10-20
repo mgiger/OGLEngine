@@ -26,12 +26,12 @@
 - (BOOL)next;
 - (void)reset;
 
-- (BOOL)boolAtIndex:(NSInteger)index;
-- (NSInteger)integerAtIndex:(NSInteger)index;
-- (long)longAtIndex:(NSInteger)index;
-- (float)floatAtIndex:(NSInteger)index;
-- (double)doubleAtIndex:(NSInteger)index;
-- (NSString*)stringAtIndex:(NSInteger)index;
-- (NSData*)dataAtIndex:(NSInteger)index;
+- (BOOL)boolAtIndex:(int)index;
+- (NSInteger)integerAtIndex:(int)index;
+- (long)longAtIndex:(int)index;
+- (float)floatAtIndex:(int)index;
+- (double)doubleAtIndex:(int)index;
+- (NSString*)stringAtIndex:(int)index;
+- (NSData*)dataAtIndex:(int)index;
 
 @end

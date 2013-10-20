@@ -14,19 +14,19 @@
 @property (nonatomic, assign)	CGSize		screenSize;
 @property (nonatomic, assign)	CGFloat		near;
 @property (nonatomic, assign)	CGFloat		far;
-@property (nonatomic, assign)	CGFloat3	position;
-@property (nonatomic, assign)	CGFloat3	forward;
-@property (nonatomic, assign)	CGFloat3	up;
-@property (nonatomic, assign)	CGFloat4x4	transform;
+@property (nonatomic, assign)	OGLFloat3	position;
+@property (nonatomic, assign)	OGLFloat3	forward;
+@property (nonatomic, assign)	OGLFloat3	up;
+@property (nonatomic, assign)	OGLFloat4x4	transform;
 @property (nonatomic, readonly)	BOOL		active;
-@property (nonatomic, readonly)	CGFloat4x4	projection;
-@property (nonatomic, readonly)	CGFloat4x4	modelview;
-@property (nonatomic, readonly)	CGFloat4x4	modelViewProjection;
-@property (nonatomic, readonly)	CGFrustum	viewFrustum;
+@property (nonatomic, readonly)	OGLFloat4x4	projection;
+@property (nonatomic, readonly)	OGLFloat4x4	modelview;
+@property (nonatomic, readonly)	OGLFloat4x4	modelViewProjection;
+@property (nonatomic, readonly)	OGLFrustum	viewFrustum;
 
 - (void)updateDirty;
 - (void)render:(OGLRenderInfo*)info;
-- (CGRay)calcRay:(CGPoint)pt;
+- (OGLRay)calcRay:(CGPoint)pt;
 
 - (void)handleTap;
 - (void)doubleTapEvent:(CGPoint)point;

@@ -19,66 +19,66 @@
 #ifndef _OGLEngine_
 #define _OGLEngine_
 
-struct CGFloat3 {
-	CGFloat x;
-	CGFloat y;
-	CGFloat z;
+struct OGLFloat3 {
+	float x;
+	float y;
+	float z;
 };
-typedef struct CGFloat3 CGFloat3;
+typedef struct OGLFloat3 OGLFloat3;
 
-struct CGFloat4 {
-	CGFloat x;
-	CGFloat y;
-	CGFloat z;
-	CGFloat w;
+struct OGLFloat4 {
+	float x;
+	float y;
+	float z;
+	float w;
 };
-typedef struct CGFloat4 CGFloat4;
+typedef struct OGLFloat4 OGLFloat4;
 
-struct CGFloat4x4 {
-	CGFloat	mat[4][4];
+struct OGLFloat4x4 {
+	float	mat[4][4];
 };
-typedef struct CGFloat4x4 CGFloat4x4;
+typedef struct OGLFloat4x4 OGLFloat4x4;
 
-struct CGQuaternion {
-	CGFloat	w;
-	CGFloat	x;
-	CGFloat	y;
-	CGFloat	z;
+struct OGLQuaternion {
+	float	w;
+	float	x;
+	float	y;
+	float	z;
 };
-typedef struct CGQuaternion CGQuaternion;
+typedef struct OGLQuaternion OGLQuaternion;
 
-struct CGCube {
-	CGFloat3	minc;
-	CGFloat3	maxc;
+struct OGLCube {
+	OGLFloat3	minc;
+	OGLFloat3	maxc;
 };
-typedef struct CGCube CGCube;
+typedef struct OGLCube OGLCube;
 
-struct CGRay {
-	CGFloat3	origin;
-	CGFloat3	direction;
+struct OGLRay {
+	OGLFloat3	origin;
+	OGLFloat3	direction;
 };
-typedef struct CGRay CGRay;
+typedef struct OGLRay OGLRay;
 
-struct CGSphere {
-	CGFloat3	center;
-	CGFloat		radius, radius_sq;
+struct OGLSphere {
+	OGLFloat3	center;
+	float		radius, radius_sq;
 };
-typedef struct CGSphere CGSphere;
+typedef struct OGLSphere OGLSphere;
 
-struct CGPlane {
-	CGFloat	a;
-	CGFloat	b;
-	CGFloat	c;
-	CGFloat	d;
+struct OGLPlane {
+	float	a;
+	float	b;
+	float	c;
+	float	d;
 };
-typedef struct CGPlane CGPlane;
+typedef struct OGLPlane OGLPlane;
 
-struct CGFrustum {
+struct OGLFrustum {
 	
-	CGPlane		plane[6];		///< Six frustum planes
-	CGSphere	bnd_sphere;		///< Bounding sphere
+	OGLPlane		plane[6];		///< Six frustum planes
+	OGLSphere	bnd_sphere;		///< Bounding sphere
 };
-typedef struct CGFrustum CGFrustum;
+typedef struct OGLFrustum OGLFrustum;
 
 @class OGLBuffer;
 @class OGLCamera;
@@ -101,35 +101,35 @@ typedef OGLSceneObject* (^PanGestureBlock)(UIPanGestureRecognizer*);
 typedef OGLSceneObject* (^PinchGestureBlock)(UIPinchGestureRecognizer*);
 
 
-CGFloat3 CGFloat3Make(CGFloat x, CGFloat y, CGFloat z);
-CGFloat3 CGFloat3Mult(CGFloat3 a, CGFloat v);
-CGFloat4 CGFloat4Make(CGFloat x, CGFloat y, CGFloat z, CGFloat w);
-CGQuaternion CGQuaternionMake(CGFloat angle, CGFloat3 axis);
-CGFrustum CGFrustumMake(CGFloat4x4 mvp);
-CGRay CGRayMake(CGFloat3 origin, CGFloat3 direction);
+OGLFloat3 OGLFloat3Make(float x, float y, float z);
+OGLFloat3 OGLFloat3Mult(OGLFloat3 a, float v);
+OGLFloat4 OGLFloat4Make(float x, float y, float z, float w);
+OGLQuaternion OGLQuaternionMake(float angle, OGLFloat3 axis);
+OGLFrustum OGLFrustumMake(OGLFloat4x4 mvp);
+OGLRay OGLRayMake(OGLFloat3 origin, OGLFloat3 direction);
 
-CGFloat4x4 identity4x4();
-CGFloat4x4 scaleVec4x4(CGFloat3 a);
-CGFloat4x4 scale4x4(CGFloat x, CGFloat y, CGFloat z);
-CGFloat4x4 translationVec4x4(CGFloat3 a);
-CGFloat4x4 translation4x4(CGFloat x, CGFloat y, CGFloat z);
-CGFloat4x4 rotation4x4(CGFloat angle, CGFloat3 axis);
-CGFloat4x4 orthographic4x4(CGFloat left, CGFloat right, CGFloat bottom, CGFloat top, CGFloat znear, CGFloat zfar);
-CGFloat4x4 perspective4x4(CGFloat fov, CGFloat aspect, CGFloat near, CGFloat far);
-CGFloat4x4 look_toward4x4(CGFloat3 forward, CGFloat3 up);
+OGLFloat4x4 identity4x4();
+OGLFloat4x4 scaleVec4x4(OGLFloat3 a);
+OGLFloat4x4 scale4x4(float x, float y, float z);
+OGLFloat4x4 translationVec4x4(OGLFloat3 a);
+OGLFloat4x4 translation4x4(float x, float y, float z);
+OGLFloat4x4 rotation4x4(float angle, OGLFloat3 axis);
+OGLFloat4x4 orthographic4x4(float left, float right, float bottom, float top, float znear, float zfar);
+OGLFloat4x4 perspective4x4(float fov, float aspect, float near, float far);
+OGLFloat4x4 look_toward4x4(OGLFloat3 forward, OGLFloat3 up);
 
-CGFloat3 normalVec3(CGFloat3 a);
-CGFloat3 cross(CGFloat3 a, CGFloat3 b);
-CGFloat3 multVec3(CGFloat4x4 m, CGFloat3 a);
-CGFloat4 multVec4(CGFloat4x4 m, CGFloat4 a);
-CGFloat length3(CGFloat3 a);
+OGLFloat3 normalVec3(OGLFloat3 a);
+OGLFloat3 cross(OGLFloat3 a, OGLFloat3 b);
+OGLFloat3 multVec3(OGLFloat4x4 m, OGLFloat3 a);
+OGLFloat4 multVec4(OGLFloat4x4 m, OGLFloat4 a);
+float length3(OGLFloat3 a);
 
-CGFloat4x4 mult(CGFloat4x4 a, CGFloat4x4 b);
-CGFloat4x4 inverse(CGFloat4x4 m);
-CGRect multRect(CGFloat4x4 m, CGRect r);
+OGLFloat4x4 mult(OGLFloat4x4 a, OGLFloat4x4 b);
+OGLFloat4x4 inverse(OGLFloat4x4 m);
+CGRect multRect(OGLFloat4x4 m, CGRect r);
 
-CGRay multRay(CGRay r, CGFloat4x4 m);
-BOOL cubeRayInersect(CGCube cube, CGRay ray, CGFloat3* hitLocation);
+OGLRay multRay(OGLRay r, OGLFloat4x4 m);
+BOOL cubeRayInersect(OGLCube cube, OGLRay ray, OGLFloat3* hitLocation);
 
 
 extern float			_ScreenScale;

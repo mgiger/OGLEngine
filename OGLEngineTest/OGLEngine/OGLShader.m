@@ -167,7 +167,7 @@ static OGLFlatShader*	_instance;
 {
 	if(self = [super init])
 	{
-		_color = CGFloat4Make(1, 1, 1, 1);
+		_color = OGLFloat4Make(1, 1, 1, 1);
 		
 		self.vertSource = OGLNSSTRINGIFY
 		(
@@ -208,7 +208,7 @@ static OGLFlatShader*	_instance;
 	return self;
 }
 
-- (void)setColor:(CGFloat4)color
+- (void)setColor:(OGLFloat4)color
 {
 	_color = color;
 	glUniform4fv(_colorBinding, 1, &_color.x);
@@ -223,7 +223,7 @@ static OGLFlatShader*	_instance;
 		info.tex0Binding = _texBinding;
 	}
 	
-	CGFloat4x4 mvp = info.modelViewProjection;
+	OGLFloat4x4 mvp = info.modelViewProjection;
 	glUniformMatrix4fv(_mvpBinding, 1, false, &mvp.mat[0][0]);
 	glUniform4fv(_colorBinding, 1, &_color.x);
 	

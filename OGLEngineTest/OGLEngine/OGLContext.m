@@ -208,7 +208,7 @@ static int				_workerIndex = 0;
 
 @interface OGLVertexArray()
 {
-	NSUInteger	_bufferID;
+	GLuint	_bufferID;
 }
 
 @end

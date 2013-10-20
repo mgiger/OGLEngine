@@ -55,12 +55,12 @@
 	}
 }
 
-- (void)pushTransform:(CGFloat4x4)xform
+- (void)pushTransform:(OGLFloat4x4)xform
 {
-	[_modelViewStack addObject:[NSValue valueWithBytes:&xform objCType:@encode(CGFloat4x4)]];
+	[_modelViewStack addObject:[NSValue valueWithBytes:&xform objCType:@encode(OGLFloat4x4)]];
 	_modelView = mult(xform, _modelView);
 	
-	[_modelViewProjectionStack addObject:[NSValue valueWithBytes:&_modelViewProjection objCType:@encode(CGFloat4x4)]];
+	[_modelViewProjectionStack addObject:[NSValue valueWithBytes:&_modelViewProjection objCType:@encode(OGLFloat4x4)]];
 	_modelViewProjection = mult(_modelView, _projection);
 }
 

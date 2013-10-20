@@ -134,10 +134,10 @@
 	sqlite3_stmt* stmt;
 	int val;
 	do {
-		val = sqlite3_prepare_v2(_db, [kCacheTestSQL UTF8String], [kCacheTestSQL length], &stmt, 0);
+		val = sqlite3_prepare_v2(_db, [kCacheTestSQL UTF8String], (int)[kCacheTestSQL length], &stmt, 0);
 		if(val == SQLITE_OK)
 		{
-			sqlite3_bind_text(stmt, 1, [dataID UTF8String], [dataID length], SQLITE_STATIC);
+			sqlite3_bind_text(stmt, 1, [dataID UTF8String], (int)[dataID length], SQLITE_STATIC);
 			val = sqlite3_step(stmt);
 			if(val == SQLITE_ROW)
 				result = YES;
@@ -161,11 +161,11 @@
 	do
 	{
 		NSString* storeSQL = [NSString stringWithFormat:kCacheStoreSQL, days];
-		val = sqlite3_prepare_v2(_db, [storeSQL UTF8String], [storeSQL length], &stmt, 0);
+		val = sqlite3_prepare_v2(_db, [storeSQL UTF8String], (int)[storeSQL length], &stmt, 0);
 		if(val == SQLITE_OK)
 		{
-			sqlite3_bind_text(stmt, 1, [dataID UTF8String], [dataID length], SQLITE_STATIC);
-			sqlite3_bind_blob(stmt, 2, [data bytes], [data length], SQLITE_STATIC);
+			sqlite3_bind_text(stmt, 1, [dataID UTF8String], (int)[dataID length], SQLITE_STATIC);
+			sqlite3_bind_blob(stmt, 2, [data bytes], (int)[data length], SQLITE_STATIC);
 			
 			val = sqlite3_step(stmt);
 			if(val == SQLITE_DONE) // success
@@ -190,10 +190,10 @@
 	int val;
 	do
 	{
-		val = sqlite3_prepare_v2(_db, [kCacheDeleteSQL UTF8String], [kCacheDeleteSQL length], &stmt, 0);
+		val = sqlite3_prepare_v2(_db, [kCacheDeleteSQL UTF8String], (int)[kCacheDeleteSQL length], &stmt, 0);
 		if(val == SQLITE_OK)
 		{
-			sqlite3_bind_text(stmt, 1, [dataID UTF8String], [dataID length], SQLITE_STATIC);
+			sqlite3_bind_text(stmt, 1, [dataID UTF8String], (int)[dataID length], SQLITE_STATIC);
 			val = sqlite3_step(stmt);
 			if(val == SQLITE_DONE)	// success
 				result = YES;
@@ -216,10 +216,10 @@
 	int val;
 	do
 	{
-		val = sqlite3_prepare_v2(_db, [kCacheLoadSQL UTF8String], [kCacheLoadSQL length], &stmt, 0);
+		val = sqlite3_prepare_v2(_db, [kCacheLoadSQL UTF8String], (int)[kCacheLoadSQL length], &stmt, 0);
 		if(val == SQLITE_OK)
 		{
-			sqlite3_bind_text(stmt, 1, [dataID UTF8String], [dataID length], SQLITE_STATIC);
+			sqlite3_bind_text(stmt, 1, [dataID UTF8String], (int)[dataID length], SQLITE_STATIC);
 			val = sqlite3_step(stmt);
 			if(val == SQLITE_ROW)
 			{
@@ -239,15 +239,15 @@
 	return result;
 }
 
-+ (void)bind:(id)obj toStatement:(sqlite3_stmt*)stmt atIndex:(NSInteger)idx
++ (void)bind:(id)obj toStatement:(sqlite3_stmt*)stmt atIndex:(int)idx
 {
 	if([obj isKindOfClass:[NSString class]])
 	{
-		sqlite3_bind_text(stmt, idx, [obj UTF8String], [obj length], SQLITE_TRANSIENT);
+		sqlite3_bind_text(stmt, idx, [obj UTF8String], (int)[obj length], SQLITE_TRANSIENT);
 	}
 	else if ([obj isKindOfClass:[NSData class]])
 	{
-		sqlite3_bind_blob(stmt, idx, [obj bytes], [obj length], SQLITE_TRANSIENT);
+		sqlite3_bind_blob(stmt, idx, [obj bytes], (int)[obj length], SQLITE_TRANSIENT);
 	}
 	else if ([obj isKindOfClass:[NSDate class]])
 	{
@@ -294,7 +294,7 @@
 	if([firstObject isKindOfClass:[NSString class]])
 	{
 		sqlite3_stmt* stmt;
-		if(sqlite3_prepare_v2(_db, [firstObject UTF8String], [firstObject length], &stmt, 0) == SQLITE_OK)
+		if(sqlite3_prepare_v2(_db, [firstObject UTF8String], (int)[firstObject length], &stmt, 0) == SQLITE_OK)
 		{
 			va_list argumentList;
 			va_start(argumentList, firstObject);
@@ -302,7 +302,7 @@
 			if(count > 0)
 			{
 				id eachObject;
-				NSInteger index = 1;
+				int index = 1;
 				while(index <= count && (eachObject = va_arg(argumentList, id)) != nil)
 					[OGLDatabase bind:eachObject toStatement:stmt atIndex:index++];
 			}
@@ -347,38 +347,38 @@
 	sqlite3_reset(_statement);
 }
 
-- (BOOL)boolAtIndex:(NSInteger)index
+- (BOOL)boolAtIndex:(int)index
 {
     return sqlite3_column_int(_statement, index) != 0;
 }
 
-- (NSInteger)integerAtIndex:(NSInteger)index
+- (NSInteger)integerAtIndex:(int)index
 {
     return sqlite3_column_int(_statement, index);
 }
 
-- (long)longAtIndex:(NSInteger)index
+- (long)longAtIndex:(int)index
 {
 	return (long)sqlite3_column_int64(_statement, index);
 }
 
-- (float)floatAtIndex:(NSInteger)index
+- (float)floatAtIndex:(int)index
 {
     return sqlite3_column_double(_statement, index);
 }
 
-- (double)doubleAtIndex:(NSInteger)index
+- (double)doubleAtIndex:(int)index
 {
     return sqlite3_column_double(_statement, index);
 }
 
-- (NSString*)stringAtIndex:(NSInteger)index
+- (NSString*)stringAtIndex:(int)index
 {
 	const char *c = (const char *)sqlite3_column_text(_statement, index);
 	return c ? [NSString stringWithUTF8String:c] : nil;
 }
 
-- (NSData*)dataAtIndex:(NSInteger)index
+- (NSData*)dataAtIndex:(int)index
 {
 	NSData* result = nil;
 	int bytes = sqlite3_column_bytes(_statement, 0);

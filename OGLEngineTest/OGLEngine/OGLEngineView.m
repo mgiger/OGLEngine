@@ -230,18 +230,18 @@ static CGSize			_touchPixelRadius;
 	OGLRenderInfo* info = [[OGLRenderInfo alloc] initWithCamera:_camera withSpriteLayer:_userInterface];
 	[_camera render:info];
 	
-	// check to make sure we need to render
-	static BOOL isBusy = NO;	// set to YES if updating values
-	static double lastTime = 0;
-	if(!isBusy && ![OGLTween tweensActive] && !_camera.active)
-	{
-		double ftime = CFAbsoluteTimeGetCurrent();
-		if(fabs(lastTime - ftime) < 0.5)
-			return;
-		lastTime = ftime;
-	}
+//	// check to make sure we need to render
+//	static BOOL isBusy = NO;	// set to YES if updating values
+//	static double lastTime = 0;
+//	if(!isBusy && ![OGLTween tweensActive] && !_camera.active)
+//	{
+//		double ftime = CFAbsoluteTimeGetCurrent();
+//		if(fabs(lastTime - ftime) < 0.5)
+//			return;
+//		lastTime = ftime;
+//	}
 	
-	glViewport(0, 0, self.drawableWidth, self.drawableHeight);
+	glViewport(0, 0, (GLsizei)self.drawableWidth, (GLsizei)self.drawableHeight);
 	glClearColor(_backColor.x, _backColor.y, _backColor.z, _backColor.w);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	

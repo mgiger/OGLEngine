@@ -25,35 +25,35 @@ const float	c_half_pi					= c_pi * 0.5f;
 const float	c_deg						= 180.0f / c_pi;
 const float	c_rad						= c_pi / 180.0f;
 
-CGFloat3 CGFloat3Make(CGFloat x, CGFloat y, CGFloat z)
+OGLFloat3 OGLFloat3Make(float x, float y, float z)
 {
-	CGFloat3 value = {x, y, z};
+	OGLFloat3 value = {x, y, z};
 	return value;
 }
 
-CGFloat3 CGFloat3Mult(CGFloat3 a, CGFloat v)
+OGLFloat3 OGLFloat3Mult(OGLFloat3 a, float v)
 {
-	CGFloat3 value = {a.x*v, a.y*v, a.z*v};
+	OGLFloat3 value = {a.x*v, a.y*v, a.z*v};
 	return value;
 }
 
-CGFloat4 CGFloat4Make(CGFloat x, CGFloat y, CGFloat z, CGFloat w)
+OGLFloat4 OGLFloat4Make(float x, float y, float z, float w)
 {
-	CGFloat4 value = {x, y, z, w};
+	OGLFloat4 value = {x, y, z, w};
 	return value;
 }
 
-CGPlane CGPlaneMake(CGFloat a, CGFloat b, CGFloat c, CGFloat d)
+OGLPlane OGLPlaneMake(float a, float b, float c, float d)
 {
-	CGPlane value = {a, b, c, d};
+	OGLPlane value = {a, b, c, d};
 	return value;
 }
 
-CGPlane CGPlaneNormalize(CGPlane p)
+OGLPlane OGLPlaneNormalize(OGLPlane p)
 {
-	CGFloat inv = 1 / sqrt(p.a*p.a + p.b*p.b + p.c*p.c);
+	float inv = 1 / sqrt(p.a*p.a + p.b*p.b + p.c*p.c);
 	
-	CGPlane value;
+	OGLPlane value;
 	value.a = p.a * inv;
 	value.b = p.b * inv;
 	value.c = p.c * inv;
@@ -61,22 +61,22 @@ CGPlane CGPlaneNormalize(CGPlane p)
 	return value;
 }
 
-CGFloat3 normalVec3(CGFloat3 v)
+OGLFloat3 normalVec3(OGLFloat3 v)
 {
-	CGFloat inv = 1 / sqrt(v.x*v.x + v.y*v.y + v.z*v.z);
+	float inv = 1 / sqrt(v.x*v.x + v.y*v.y + v.z*v.z);
 	
-	CGFloat3 value;
+	OGLFloat3 value;
 	value.x = v.x * inv;
 	value.y = v.y * inv;
 	value.z = v.z * inv;
 	return value;
 }
 
-CGQuaternion CGQuaternionMake(CGFloat angle, CGFloat3 axis)
+OGLQuaternion OGLQuaternionMake(float angle, OGLFloat3 axis)
 {
-	CGQuaternion value;
-	CGFloat ang = angle * 0.5;
-	CGFloat s = sin(ang);
+	OGLQuaternion value;
+	float ang = angle * 0.5;
+	float s = sin(ang);
 	value.w = cos(ang);
 	value.x = s * axis.x;
 	value.y = s * axis.y;
@@ -84,52 +84,52 @@ CGQuaternion CGQuaternionMake(CGFloat angle, CGFloat3 axis)
 	return value;
 }
 
-CGFrustum CGFrustumMake(CGFloat4x4 mvp)
+OGLFrustum OGLFrustumMake(OGLFloat4x4 mvp)
 {
-	CGFrustum value;
+	OGLFrustum value;
 	
 	// left & right planes
-	value.plane[0] = CGPlaneMake(mvp.mat[3][0] + mvp.mat[0][0], mvp.mat[3][1] + mvp.mat[0][1], mvp.mat[3][2] + mvp.mat[0][2], mvp.mat[3][3] - mvp.mat[0][3]);
-	value.plane[1] = CGPlaneMake(mvp.mat[3][0] - mvp.mat[0][0], mvp.mat[3][1] - mvp.mat[0][1], mvp.mat[3][2] - mvp.mat[0][2], mvp.mat[3][3] - mvp.mat[0][3]);
-	value.plane[0] = CGPlaneNormalize(value.plane[0]);
-	value.plane[1] = CGPlaneNormalize(value.plane[1]);
+	value.plane[0] = OGLPlaneMake(mvp.mat[3][0] + mvp.mat[0][0], mvp.mat[3][1] + mvp.mat[0][1], mvp.mat[3][2] + mvp.mat[0][2], mvp.mat[3][3] - mvp.mat[0][3]);
+	value.plane[1] = OGLPlaneMake(mvp.mat[3][0] - mvp.mat[0][0], mvp.mat[3][1] - mvp.mat[0][1], mvp.mat[3][2] - mvp.mat[0][2], mvp.mat[3][3] - mvp.mat[0][3]);
+	value.plane[0] = OGLPlaneNormalize(value.plane[0]);
+	value.plane[1] = OGLPlaneNormalize(value.plane[1]);
 	
 	// top & bottom planes
-	value.plane[2] = CGPlaneMake(mvp.mat[3][0] - mvp.mat[1][0], mvp.mat[3][1] - mvp.mat[1][1], mvp.mat[3][2] - mvp.mat[1][2], mvp.mat[3][3] - mvp.mat[1][3]);
-	value.plane[3] = CGPlaneMake(mvp.mat[3][0] + mvp.mat[1][0], mvp.mat[3][1] + mvp.mat[1][1], mvp.mat[3][2] + mvp.mat[1][2], mvp.mat[3][3] + mvp.mat[1][3]);
-	value.plane[2] = CGPlaneNormalize(value.plane[2]);
-	value.plane[3] = CGPlaneNormalize(value.plane[3]);
+	value.plane[2] = OGLPlaneMake(mvp.mat[3][0] - mvp.mat[1][0], mvp.mat[3][1] - mvp.mat[1][1], mvp.mat[3][2] - mvp.mat[1][2], mvp.mat[3][3] - mvp.mat[1][3]);
+	value.plane[3] = OGLPlaneMake(mvp.mat[3][0] + mvp.mat[1][0], mvp.mat[3][1] + mvp.mat[1][1], mvp.mat[3][2] + mvp.mat[1][2], mvp.mat[3][3] + mvp.mat[1][3]);
+	value.plane[2] = OGLPlaneNormalize(value.plane[2]);
+	value.plane[3] = OGLPlaneNormalize(value.plane[3]);
 	
 	// near & far planes
-	value.plane[4] = CGPlaneMake(mvp.mat[3][0] + mvp.mat[2][0], mvp.mat[3][1] + mvp.mat[2][1], mvp.mat[3][2] + mvp.mat[2][2], mvp.mat[3][3] + mvp.mat[2][3]);
-	value.plane[5] = CGPlaneMake(mvp.mat[3][0] - mvp.mat[2][0], mvp.mat[3][1] - mvp.mat[2][1], mvp.mat[3][2] - mvp.mat[2][2], mvp.mat[3][3] - mvp.mat[2][3]);
-	value.plane[4] = CGPlaneNormalize(value.plane[4]);
-	value.plane[5] = CGPlaneNormalize(value.plane[5]);
+	value.plane[4] = OGLPlaneMake(mvp.mat[3][0] + mvp.mat[2][0], mvp.mat[3][1] + mvp.mat[2][1], mvp.mat[3][2] + mvp.mat[2][2], mvp.mat[3][3] + mvp.mat[2][3]);
+	value.plane[5] = OGLPlaneMake(mvp.mat[3][0] - mvp.mat[2][0], mvp.mat[3][1] - mvp.mat[2][1], mvp.mat[3][2] - mvp.mat[2][2], mvp.mat[3][3] - mvp.mat[2][3]);
+	value.plane[4] = OGLPlaneNormalize(value.plane[4]);
+	value.plane[5] = OGLPlaneNormalize(value.plane[5]);
 	
 	return value;
 }
 
-CGRay CGRayMake(CGFloat3 origin, CGFloat3 direction)
+OGLRay OGLRayMake(OGLFloat3 origin, OGLFloat3 direction)
 {
-	CGRay value;
+	OGLRay value;
 	value.origin = origin;
 	value.direction = direction;
 	return value;
 }
 
-CGFloat4x4 identity4x4()
+OGLFloat4x4 identity4x4()
 {
-	CGFloat4x4 value;
-	memset(value.mat, 0, 16 * sizeof(CGFloat));
+	OGLFloat4x4 value;
+	memset(value.mat, 0, 16 * sizeof(float));
 	value.mat[0][0] = value.mat[1][1] = value.mat[2][2] = value.mat[3][3] = 1;
 	return value;
 }
 
 
-CGFloat4x4 scaleVec4x4(CGFloat3 a)
+OGLFloat4x4 scaleVec4x4(OGLFloat3 a)
 {
-	CGFloat4x4 value;
-	memset(value.mat, 0, 16 * sizeof(CGFloat));
+	OGLFloat4x4 value;
+	memset(value.mat, 0, 16 * sizeof(float));
 	value.mat[0][0] = a.x;
 	value.mat[1][1] = a.y;
 	value.mat[2][2] = a.z;
@@ -137,10 +137,10 @@ CGFloat4x4 scaleVec4x4(CGFloat3 a)
 	return value;
 }
 
-CGFloat4x4 scale4x4(CGFloat x, CGFloat y, CGFloat z)
+OGLFloat4x4 scale4x4(float x, float y, float z)
 {
-	CGFloat4x4 value;
-	memset(value.mat, 0, 16 * sizeof(CGFloat));
+	OGLFloat4x4 value;
+	memset(value.mat, 0, 16 * sizeof(float));
 	value.mat[0][0] = x;
 	value.mat[1][1] = y;
 	value.mat[2][2] = z;
@@ -149,10 +149,10 @@ CGFloat4x4 scale4x4(CGFloat x, CGFloat y, CGFloat z)
 }
 
 
-CGFloat4x4 translationVec4x4(CGFloat3 a)
+OGLFloat4x4 translationVec4x4(OGLFloat3 a)
 {
-	CGFloat4x4 value;
-	memset(value.mat, 0, 16 * sizeof(CGFloat));
+	OGLFloat4x4 value;
+	memset(value.mat, 0, 16 * sizeof(float));
 	value.mat[0][0] = value.mat[1][1] = value.mat[2][2] = value.mat[3][3] = 1;
 	value.mat[3][0] = a.x;
 	value.mat[3][1] = a.y;
@@ -160,10 +160,10 @@ CGFloat4x4 translationVec4x4(CGFloat3 a)
 	return value;
 }
 
-CGFloat4x4 translation4x4(CGFloat x, CGFloat y, CGFloat z)
+OGLFloat4x4 translation4x4(float x, float y, float z)
 {
-	CGFloat4x4 value;
-	memset(value.mat, 0, 16 * sizeof(CGFloat));
+	OGLFloat4x4 value;
+	memset(value.mat, 0, 16 * sizeof(float));
 	value.mat[0][0] = value.mat[1][1] = value.mat[2][2] = value.mat[3][3] = 1;
 	value.mat[3][0] = x;
 	value.mat[3][1] = y;
@@ -171,15 +171,15 @@ CGFloat4x4 translation4x4(CGFloat x, CGFloat y, CGFloat z)
 	return value;
 }
 
-CGFloat4x4 rotation4x4(CGFloat angle, CGFloat3 axis)
+OGLFloat4x4 rotation4x4(float angle, OGLFloat3 axis)
 {
-	CGQuaternion q = CGQuaternionMake(angle, axis);
-	CGFloat x2 = q.x + q.x, y2 = q.y + q.y, z2 = q.z + q.z;
-	CGFloat xx = q.x * x2, xy = q.x * y2, xz = q.x * z2;
-	CGFloat yy = q.y * y2, yz = q.y * z2, zz = q.z * z2;
-	CGFloat wx = q.w * x2, wy = q.w * y2, wz = q.w * z2;
+	OGLQuaternion q = OGLQuaternionMake(angle, axis);
+	float x2 = q.x + q.x, y2 = q.y + q.y, z2 = q.z + q.z;
+	float xx = q.x * x2, xy = q.x * y2, xz = q.x * z2;
+	float yy = q.y * y2, yz = q.y * z2, zz = q.z * z2;
+	float wx = q.w * x2, wy = q.w * y2, wz = q.w * z2;
 	
-	CGFloat4x4 value;
+	OGLFloat4x4 value;
 	value.mat[0][0] = 1-(yy+zz);	value.mat[1][0] = xy+wz;		value.mat[2][0] = xz-wy;		value.mat[3][0] = 0.0;
 	value.mat[0][1] = xy-wz;		value.mat[1][1] = 1-(xx+zz);	value.mat[2][1] = yz+wx;		value.mat[3][1] = 0.0;
 	value.mat[0][2] = xz+wy;		value.mat[1][2] = yz-wx;		value.mat[2][2] = 1-(xx+yy);	value.mat[3][2] = 0.0;
@@ -187,14 +187,14 @@ CGFloat4x4 rotation4x4(CGFloat angle, CGFloat3 axis)
 	return value;
 }
 
-CGFloat4x4 orthographic4x4(CGFloat left, CGFloat right, CGFloat bottom, CGFloat top, CGFloat znear, CGFloat zfar)
+OGLFloat4x4 orthographic4x4(float left, float right, float bottom, float top, float znear, float zfar)
 {
-	CGFloat4x4 value;
+	OGLFloat4x4 value;
 	
-	CGFloat rml = right - left;
-	CGFloat tmb = top - bottom;
-	CGFloat fmn = zfar - znear;
-	memset(value.mat, 0, 16 * sizeof(CGFloat));
+	float rml = right - left;
+	float tmb = top - bottom;
+	float fmn = zfar - znear;
+	memset(value.mat, 0, 16 * sizeof(float));
 	
 	value.mat[0][0] = 2/rml;
 	value.mat[1][1] = 2/tmb;
@@ -207,13 +207,13 @@ CGFloat4x4 orthographic4x4(CGFloat left, CGFloat right, CGFloat bottom, CGFloat 
 	return value;
 }
 
-CGFloat4x4 perspective4x4(CGFloat fov, CGFloat aspect, CGFloat near, CGFloat far)
+OGLFloat4x4 perspective4x4(float fov, float aspect, float near, float far)
 {
-	CGFloat f = 1.0 / tan(fov * 0.5 * c_rad);
-	CGFloat n = 1.0 / (near - far);
+	float f = 1.0 / tan(fov * 0.5 * c_rad);
+	float n = 1.0 / (near - far);
 	
-	CGFloat4x4 value;
-	memset(value.mat, 0, 16 * sizeof(CGFloat));
+	OGLFloat4x4 value;
+	memset(value.mat, 0, 16 * sizeof(float));
 	value.mat[0][0] = f/aspect;
 	value.mat[1][1] = f;
 	value.mat[2][2] = (far+near)*n;
@@ -222,12 +222,12 @@ CGFloat4x4 perspective4x4(CGFloat fov, CGFloat aspect, CGFloat near, CGFloat far
 	return value;
 }
 
-CGFloat4x4 look_toward4x4(CGFloat3 forward, CGFloat3 up)
+OGLFloat4x4 look_toward4x4(OGLFloat3 forward, OGLFloat3 up)
 {
-	CGFloat3 side = cross(forward, up);
-	CGFloat3 nup = cross(side, forward);
+	OGLFloat3 side = cross(forward, up);
+	OGLFloat3 nup = cross(side, forward);
 	
-	CGFloat4x4 value;
+	OGLFloat4x4 value;
 	value.mat[0][0] = side.x;
 	value.mat[1][0] = side.y;
 	value.mat[2][0] = side.z;
@@ -249,21 +249,21 @@ CGFloat4x4 look_toward4x4(CGFloat3 forward, CGFloat3 up)
 
 
 
-CGFloat length3(CGFloat3 a)
+float length3(OGLFloat3 a)
 {
 	return sqrt(a.x*a.x + a.y*a.y + a.z*a.z);
 }
 
-CGFloat3 cross(CGFloat3 a, CGFloat3 b)
+OGLFloat3 cross(OGLFloat3 a, OGLFloat3 b)
 {
-	return CGFloat3Make(a.y*b.z-a.z*b.y, a.z*b.x-a.x*b.z, a.x*b.y-a.y*b.x);
+	return OGLFloat3Make(a.y*b.z-a.z*b.y, a.z*b.x-a.x*b.z, a.x*b.y-a.y*b.x);
 }
 
 
 
-CGFloat4x4 mult(CGFloat4x4 a, CGFloat4x4 b)
+OGLFloat4x4 mult(OGLFloat4x4 a, OGLFloat4x4 b)
 {
-	CGFloat4x4 ret;
+	OGLFloat4x4 ret;
 	
 	ret.mat[0][0] = a.mat[0][0]*b.mat[0][0] + a.mat[0][1]*b.mat[1][0] + a.mat[0][2]*b.mat[2][0] + a.mat[0][3]*b.mat[3][0];
 	ret.mat[0][1] = a.mat[0][0]*b.mat[0][1] + a.mat[0][1]*b.mat[1][1] + a.mat[0][2]*b.mat[2][1] + a.mat[0][3]*b.mat[3][1];
@@ -288,18 +288,18 @@ CGFloat4x4 mult(CGFloat4x4 a, CGFloat4x4 b)
 	return ret;
 }
 
-CGFloat3 multVec3(CGFloat4x4 m, CGFloat3 a)
+OGLFloat3 multVec3(OGLFloat4x4 m, OGLFloat3 a)
 {
-	CGFloat3 value;
+	OGLFloat3 value;
 	value.x = m.mat[0][0]*a.x + m.mat[1][0]*a.y + m.mat[2][0]*a.z + m.mat[3][0];
 	value.y = m.mat[0][1]*a.x + m.mat[1][1]*a.y + m.mat[2][1]*a.z + m.mat[3][1];
 	value.z = m.mat[0][2]*a.x + m.mat[1][2]*a.y + m.mat[2][2]*a.z + m.mat[3][2];
 	return value;
 }
 
-CGFloat4 multVec4(CGFloat4x4 m, CGFloat4 v)
+OGLFloat4 multVec4(OGLFloat4x4 m, OGLFloat4 v)
 {
-	CGFloat4 value;
+	OGLFloat4 value;
 	value.x = m.mat[0][0]*v.x + m.mat[1][0]*v.y + m.mat[2][0]*v.z + m.mat[3][0]*v.w;
 	value.y = m.mat[0][1]*v.x + m.mat[1][1]*v.y + m.mat[2][1]*v.z + m.mat[3][1]*v.w;
 	value.z = m.mat[0][2]*v.x + m.mat[1][2]*v.y + m.mat[2][2]*v.z + m.mat[3][2]*v.w;
@@ -307,7 +307,7 @@ CGFloat4 multVec4(CGFloat4x4 m, CGFloat4 v)
 	return value;
 }
 
-CGRect multRect(CGFloat4x4 m, CGRect r)
+CGRect multRect(OGLFloat4x4 m, CGRect r)
 {
 	CGRect value;
 	value.origin.x = m.mat[0][0]*r.origin.x + m.mat[1][0]*r.origin.y + m.mat[3][0];
@@ -319,10 +319,10 @@ CGRect multRect(CGFloat4x4 m, CGRect r)
 
 
 
-void ludcmp(CGFloat4x4* m, CGFloat** a, int indx[], CGFloat *d, int size)
+void ludcmp(OGLFloat4x4* m, float** a, int indx[], float *d, int size)
 {
 	int	i, imax, j, k;
-	CGFloat	big, dum, sum, temp, vv[8];
+	float	big, dum, sum, temp, vv[8];
 	
 	*d = 1.0;
 	for(i=0;i<size;i++) {
@@ -376,11 +376,11 @@ void ludcmp(CGFloat4x4* m, CGFloat** a, int indx[], CGFloat *d, int size)
 	}
 }
 
-CGFloat4x4 inverse(CGFloat4x4 m)
+OGLFloat4x4 inverse(OGLFloat4x4 m)
 {
-	CGFloat	tmp[12];
-	CGFloat	src[16];
-	CGFloat	dst[16];
+	float	tmp[12];
+	float	src[16];
+	float	dst[16];
 	
 	for (int i = 0; i < 4; ++i) {
 		src[i]		= m.mat[i][0];
@@ -454,14 +454,14 @@ CGFloat4x4 inverse(CGFloat4x4 m)
 	dst[15]-= tmp[8]*src[9] + tmp[11]*src[10] + tmp[5]*src[8];
 	
 	// calculate determinant
-	CGFloat det=src[0]*dst[0]+src[1]*dst[1]+src[2]*dst[2]+src[3]*dst[3];
+	float det=src[0]*dst[0]+src[1]*dst[1]+src[2]*dst[2]+src[3]*dst[3];
 	
 	// calculate matrix inverse
 	det = 1/det;
 	for (int j = 0; j < 16; j++)
 		dst[j] *= det;
 	
-	CGFloat4x4 r;
+	OGLFloat4x4 r;
 	for (int i = 0; i < 4; ++i) {
 		r.mat[i][0] = dst[i];
 		r.mat[i][1] = dst[i+4];
@@ -472,24 +472,24 @@ CGFloat4x4 inverse(CGFloat4x4 m)
 	return r;
 }
 
-CGRay multRay(CGRay r, CGFloat4x4 m)
+OGLRay multRay(OGLRay r, OGLFloat4x4 m)
 {
-	CGFloat3 o = multVec3(m, r.origin);
-	CGFloat4 d = multVec4(m, CGFloat4Make(r.direction.x, r.direction.y, r.direction.z, 0));
-	return CGRayMake(o, normalVec3(CGFloat3Make(d.x, d.y, d.z)));
+	OGLFloat3 o = multVec3(m, r.origin);
+	OGLFloat4 d = multVec4(m, OGLFloat4Make(r.direction.x, r.direction.y, r.direction.z, 0));
+	return OGLRayMake(o, normalVec3(OGLFloat3Make(d.x, d.y, d.z)));
 }
 
-BOOL cubeRayInersect(CGCube cube, CGRay ray, CGFloat3* hitLocation)
+BOOL cubeRayInersect(OGLCube cube, OGLRay ray, OGLFloat3* hitLocation)
 {
 	enum { q_left = -1, q_middle = 0, q_right };
 	
-	CGFloat rorig[3] = {ray.origin.x, ray.origin.y, ray.origin.z};
-	CGFloat rdir[3] = {ray.direction.x, ray.direction.y, ray.direction.z};
-	CGFloat maxc[3] = {cube.maxc.x, cube.maxc.y, cube.maxc.z};
-	CGFloat minc[3] = {cube.minc.x, cube.minc.y, cube.minc.z};
+	float rorig[3] = {ray.origin.x, ray.origin.y, ray.origin.z};
+	float rdir[3] = {ray.direction.x, ray.direction.y, ray.direction.z};
+	float maxc[3] = {cube.maxc.x, cube.maxc.y, cube.maxc.z};
+	float minc[3] = {cube.minc.x, cube.minc.y, cube.minc.z};
 	
 	int quad[3];
-	CGFloat cplane[3];
+	float cplane[3];
 	BOOL inside = YES;
 	for(int i=0;i<3;++i)
 	{
@@ -517,7 +517,7 @@ BOOL cubeRayInersect(CGCube cube, CGRay ray, CGFloat3* hitLocation)
 		return YES;
 	}
 	
-	CGFloat max_t[3];
+	float max_t[3];
 	for(int i=0;i<3;++i)
 	{
 		if(quad[i] != q_middle && rdir[i] != 0.)
@@ -534,7 +534,7 @@ BOOL cubeRayInersect(CGCube cube, CGRay ray, CGFloat3* hitLocation)
 	if(max_t[which_plane] < 0.)
 		return NO;
 	
-	CGFloat coord[3];
+	float coord[3];
 	for(int i=0;i<3;++i)
 	{
 		if(which_plane != i)
@@ -547,7 +547,7 @@ BOOL cubeRayInersect(CGCube cube, CGRay ray, CGFloat3* hitLocation)
 			coord[i] = cplane[i];
 	}
 	
-	*hitLocation = CGFloat3Make(coord[0], coord[1], coord[2]);
+	*hitLocation = OGLFloat3Make(coord[0], coord[1], coord[2]);
 	
 	return YES;
 }

@@ -75,14 +75,14 @@
 	return _pinchEventHandler ? _pinchEventHandler(gesture) : nil;
 }
 
-- (CGFloat4x4)rotationlessTransform
+- (OGLFloat4x4)rotationlessTransform
 {
 	return _transform;
 }
 
-- (void)intersectBounds:(CGRect)touchArea withXForm:(CGFloat4x4)xform intoArray:(NSMutableArray*)array
+- (void)intersectBounds:(CGRect)touchArea withXForm:(OGLFloat4x4)xform intoArray:(NSMutableArray*)array
 {
-	CGFloat4x4 sxform = mult([self rotationlessTransform], xform);
+	OGLFloat4x4 sxform = mult([self rotationlessTransform], xform);
 	if(_hasGeometry)
 	{
 		CGRect sbounds = multRect(xform, _bounds);
@@ -100,10 +100,10 @@
 	}
 }
 
-- (void)rayIntersect:(CGRay)r hitList:(NSMutableArray*)hits xform:(CGFloat4x4)xform
+- (void)rayIntersect:(OGLRay)r hitList:(NSMutableArray*)hits xform:(OGLFloat4x4)xform
 {
 	// accumulate local transform
-	CGFloat4x4 exform = mult(_transform, xform);
+	OGLFloat4x4 exform = mult(_transform, xform);
 	
 	for(OGLSceneObject* obj in _children)
 	{
@@ -112,17 +112,17 @@
 			if(obj.hasGeometry)
 			{
 				// get child local transform
-				CGFloat4x4 gxform = mult(obj.transform, exform);
-				CGFloat4x4 invgx = inverse(gxform);
+				OGLFloat4x4 gxform = mult(obj.transform, exform);
+				OGLFloat4x4 invgx = inverse(gxform);
 				
 				// inverse transform the ray and test for intersection
-				CGFloat3 objectPos;
-				CGRay hitRay = multRay(r, invgx);
+				OGLFloat3 objectPos;
+				OGLRay hitRay = multRay(r, invgx);
 				if(cubeRayInersect(obj.bbox, hitRay, &objectPos))
 				{
 					// transform the local hit point to world coords and determine distance
-					CGFloat3 wpos = multVec3(gxform, objectPos);
-					CGFloat dist = length3(CGFloat3Make(wpos.x - r.origin.x, wpos.y - r.origin.y, wpos.z - r.origin.z));
+					OGLFloat3 wpos = multVec3(gxform, objectPos);
+					CGFloat dist = length3(OGLFloat3Make(wpos.x - r.origin.x, wpos.y - r.origin.y, wpos.z - r.origin.z));
 					
 					OGLHitInfo* hit = [[OGLHitInfo alloc] init];
 					hit.hitRay = hitRay;
@@ -147,7 +147,7 @@
 
 @implementation OGLSceneObjectSelWrapper
 
-+ (OGLSceneObjectSelWrapper*)wrapperWithObject:(OGLSceneObject*)obj withXForm:(CGFloat4x4)xform
++ (OGLSceneObjectSelWrapper*)wrapperWithObject:(OGLSceneObject*)obj withXForm:(OGLFloat4x4)xform
 {
 	OGLSceneObjectSelWrapper* wrapper = [[OGLSceneObjectSelWrapper alloc] init];
 	wrapper.object = obj;
@@ -157,8 +157,8 @@
 
 - (NSComparisonResult)compare:(OGLSceneObjectSelWrapper*)obj
 {
-	CGFloat3 vec0 = multVec3(_transform, CGFloat3Make(0, 0, 0));
-	CGFloat3 vec1 = multVec3(obj.transform, CGFloat3Make(0, 0, 0));
+	OGLFloat3 vec0 = multVec3(_transform, OGLFloat3Make(0, 0, 0));
+	OGLFloat3 vec1 = multVec3(obj.transform, OGLFloat3Make(0, 0, 0));
 	return (vec0.z > vec1.z) ? NSOrderedAscending : (vec0.z < vec1.z ? NSOrderedDescending : NSOrderedSame);
 }
 

@@ -13,7 +13,7 @@
 
 @interface OGLShader : NSObject
 
-@property (nonatomic, assign)	uint		program;
+@property (nonatomic, assign)	GLuint		program;
 @property (nonatomic, copy)		NSString*	vertSource;
 @property (nonatomic, copy)		NSString*	fragSource;
 
@@ -30,7 +30,7 @@
 
 @interface OGLFlatShader : OGLShader
 
-@property (nonatomic, assign)	CGFloat4	color;
+@property (nonatomic, assign)	OGLFloat4	color;
 
 + (OGLFlatShader*)shader;
 

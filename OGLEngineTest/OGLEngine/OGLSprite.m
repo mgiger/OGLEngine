@@ -20,7 +20,7 @@ static NSMutableDictionary*		_iconTextures;
 @interface OGLSprite()
 
 @property (nonatomic, assign)	CGSize			texsize;
-@property (nonatomic, assign)	CGFloat4		texbounds;
+@property (nonatomic, assign)	OGLFloat4		texbounds;
 @property (nonatomic, strong)	OGLBuffer*		vertexBuf;
 @property (nonatomic, strong)	OGLVertexArray*	varray;
 
@@ -87,9 +87,9 @@ static NSMutableDictionary*		_iconTextures;
 {
 	if(self = [super init])
 	{
-		_color = CGFloat4Make(1, 1, 1, 1);
-		_scale = CGFloat3Make(1, 1, 1);
-		_texbounds = CGFloat4Make(0, 0, 1, 1);
+		_color = OGLFloat4Make(1, 1, 1, 1);
+		_scale = OGLFloat3Make(1, 1, 1);
+		_texbounds = OGLFloat4Make(0, 0, 1, 1);
 	}
 	return self;
 }
@@ -98,7 +98,7 @@ static NSMutableDictionary*		_iconTextures;
 {
 	if(_rotation != 0)
 	{
-		CGFloat4x4 xform = mult(translation4x4(-_size.width*0.5, -_size.height*0.5, 0), rotation4x4(_rotation, CGFloat3Make(0,0,1)));
+		OGLFloat4x4 xform = mult(translation4x4(-_size.width*0.5, -_size.height*0.5, 0), rotation4x4(_rotation, OGLFloat3Make(0,0,1)));
 		xform = mult(xform, translation4x4(_size.width*0.5, _size.height*0.5, 0));
 		self.transform = mult(xform, mult(scale4x4(_scale.x, _scale.y, _scale.z), translation4x4(_position.x + _offset.x, _position.y + _offset.y, _position.z + _offset.z)));
 	}
@@ -106,7 +106,7 @@ static NSMutableDictionary*		_iconTextures;
 		self.transform = mult(scale4x4(_scale.x, _scale.y, _scale.z), translation4x4(_position.x + _offset.x, _position.y + _offset.y, _position.z + _offset.z));
 }
 
-- (CGFloat4x4)rotationlessTransform
+- (OGLFloat4x4)rotationlessTransform
 {
 	if(_rotation != 0)
 		return mult(scale4x4(_scale.x, _scale.y, _scale.z), translation4x4(_position.x + _offset.x, _position.y + _offset.y, _position.z + _offset.z));
@@ -118,7 +118,7 @@ static NSMutableDictionary*		_iconTextures;
 	self.bounds = multRect([self rotationlessTransform], CGRectMake(0,0,_size.width,_size.height));
 }
 
-- (void)setAlpha:(float)alpha
+- (void)setAlpha:(CGFloat)alpha
 {
 	_alpha = alpha;
 	_color.w = alpha;
@@ -132,28 +132,28 @@ static NSMutableDictionary*		_iconTextures;
 	[self updateBounds];
 }
 
-- (void)setOffset:(CGFloat3)offset
+- (void)setOffset:(OGLFloat3)offset
 {
 	_offset = offset;
 	[self updateTransform];
 	[self updateBounds];
 }
 
-- (void)setPosition:(CGFloat3)position
+- (void)setPosition:(OGLFloat3)position
 {
 	_position = position;
 	[self updateTransform];
 	[self updateBounds];
 }
 
-- (void)setScale:(CGFloat3)scale
+- (void)setScale:(OGLFloat3)scale
 {
 	_scale = scale;
 	[self updateTransform];
 	[self updateBounds];
 }
 
-- (void)setRotation:(float)rotation
+- (void)setRotation:(CGFloat)rotation
 {
 	if(_rotation != rotation)
 	{
@@ -186,7 +186,7 @@ static NSMutableDictionary*		_iconTextures;
 			_size = _texsize = CGSizeMake(tex.width, tex.height);
 			self.texture = tex;
 			if(centered)
-				_offset = CGFloat3Make(-_size.width * 0.5, -_size.height * 0.5, 0);
+				_offset = OGLFloat3Make(-_size.width * 0.5, -_size.height * 0.5, 0);
 			[self updateTransform];
 			[self buildGeometry];
 			[self updateBounds];
@@ -207,7 +207,7 @@ static NSMutableDictionary*		_iconTextures;
 		
 		_size = _texsize;
 		if(centered)
-			_offset = CGFloat3Make(-_size.width * 0.5, -_size.height * 0.5, 0);
+			_offset = OGLFloat3Make(-_size.width * 0.5, -_size.height * 0.5, 0);
 		[self updateTransform];
 		[self buildGeometry];
 		[self updateBounds];
@@ -232,7 +232,7 @@ static NSMutableDictionary*		_iconTextures;
 			_size = _texsize = CGSizeMake(tex.width, tex.height);
 			self.texture = tex;
 			if(centered)
-				_offset = CGFloat3Make(-_size.width * 0.5, -_size.height * 0.5, 0);;
+				_offset = OGLFloat3Make(-_size.width * 0.5, -_size.height * 0.5, 0);;
 			[self buildGeometry];
 			[self updateTransform];
 			[self updateBounds];
@@ -248,7 +248,7 @@ static NSMutableDictionary*		_iconTextures;
 		
 		_size = _texsize = CGSizeMake(data.width, data.height);
 		if(centered)
-			_offset = CGFloat3Make(-_size.width * 0.5, -_size.height * 0.5, 0);
+			_offset = OGLFloat3Make(-_size.width * 0.5, -_size.height * 0.5, 0);
 		[self buildGeometry];
 		[self updateTransform];
 		[self updateBounds];
@@ -367,8 +367,8 @@ static NSMutableDictionary*		_iconTextures;
 		
 		_camera = [[OGLCamera alloc] init];
 		_camera.ortho = YES;
-		_camera.position = CGFloat3Make(0, 0, 101.0f);
-		_camera.forward = CGFloat3Make(0, 0, -1);
+		_camera.position = OGLFloat3Make(0, 0, 101.0f);
+		_camera.forward = OGLFloat3Make(0, 0, -1);
 		_camera.near = 100;
 		_camera.far = -100;
 	}
@@ -533,17 +533,17 @@ static OGLAnnotation*	_current = nil;
 			};
 		}
 		
-		self.offset = CGFloat3Make(-view.bounds.size.width*0.5, -view.bounds.size.height, 20);
+		self.offset = OGLFloat3Make(-view.bounds.size.width*0.5, -view.bounds.size.height, 20);
 		[self updateTransform];
 		
 		[OGLTween tweenFrom:0 to:1 method:tweenOutElastic duration:.7 delay:0 identifier:nil
 				 animations:^(float value) {
 					 float v = value * _scaleFactor;
-					 self.transform = mult(scale4x4(v, v, v), translationVec4x4(CGFloat3Mult(self.offset, v)));
+					 self.transform = mult(scale4x4(v, v, v), translationVec4x4(OGLFloat3Mult(self.offset, v)));
 				 }
 				 completion:^(BOOL finished) {
-					 self.scale = CGFloat3Make(_scaleFactor, _scaleFactor, _scaleFactor);
-					 self.offset = CGFloat3Mult(self.offset, _scaleFactor);
+					 self.scale = OGLFloat3Make(_scaleFactor, _scaleFactor, _scaleFactor);
+					 self.offset = OGLFloat3Mult(self.offset, _scaleFactor);
 				 }
 		 ];
 	}

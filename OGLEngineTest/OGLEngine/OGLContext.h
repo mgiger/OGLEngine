@@ -27,7 +27,7 @@
 
 @property (nonatomic, assign)	BOOL		available;
 @property (nonatomic, assign)	BOOL		arrayBuffer;
-@property (nonatomic, assign)	NSUInteger	bufferID;
+@property (nonatomic, assign)	GLuint		bufferID;
 
 - (id)initArrayBuffer;
 - (id)initIndexBuffer;
@@ -46,7 +46,7 @@
 
 @interface OGLFramebuffer : NSObject
 
-@property (nonatomic, assign)	unsigned int	framebufferID;
+@property (nonatomic, assign)	GLuint		framebufferID;
 
 - (void)bind;
 - (void)unbind;

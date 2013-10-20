@@ -165,8 +165,8 @@ static NSMutableDictionary*		_cachedTextures = nil;
 	
 	uint bminfo;
 	CGColorSpaceRef colorSpace;
-	_width = CGImageGetWidth(imageRef);
-	_height = CGImageGetHeight(imageRef);
+	_width = (int)CGImageGetWidth(imageRef);
+	_height = (int)CGImageGetHeight(imageRef);
 	if(CGImageGetBitsPerPixel(imageRef) > 8)
 	{
 		_depth = 4;
