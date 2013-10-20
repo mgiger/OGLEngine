@@ -4,18 +4,6 @@
 /// Created by Matt Giger
 /// Copyright (c) 2013 EarthBrowser LLC. All rights reserved.
 ///
-/// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-/// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
-/// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
-/// permit persons to whom the Software is furnished to do so, subject to the following conditions:
-///
-/// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-///
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-/// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-/// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-/// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-///
 
 #import "OGLShader.h"
 #import "OGLRenderInfo.h"
@@ -23,13 +11,6 @@
 #include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES2/glext.h>
 
-///////////////////////////////////////////////////////////////////////////
-///
-/// @class OGLShader
-///
-/// Shader program object
-///
-///////////////////////////////////////////////////////////////////////////
 @implementation OGLShader
 
 - (id)init
@@ -160,14 +141,6 @@
 @end
 
 
-
-///////////////////////////////////////////////////////////////////////////
-///
-/// @class OGLFlatShader
-///
-/// Shader to draw flat texture
-///
-///////////////////////////////////////////////////////////////////////////
 @interface OGLFlatShader()
 {
 	int		_vcoordBinding;
@@ -194,7 +167,7 @@ static OGLFlatShader*	_instance;
 {
 	if(self = [super init])
 	{
-		self.vertSource = NSSTRINGIFY
+		self.vertSource = OGLNSSTRINGIFY
 		(
 		 attribute vec4			position;
 		 attribute vec2			texcoord;
@@ -208,7 +181,7 @@ static OGLFlatShader*	_instance;
 		 }
 		 );
 		
-		self.fragSource = NSSTRINGIFY
+		self.fragSource = OGLNSSTRINGIFY
 		(
 		 precision mediump float;
 		 uniform sampler2D		s_texture;

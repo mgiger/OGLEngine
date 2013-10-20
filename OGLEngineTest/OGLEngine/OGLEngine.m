@@ -1,21 +1,21 @@
-///
-///  OGLEngine
-///
-/// Created by Matt Giger
-/// Copyright (c) 2013 EarthBrowser LLC. All rights reserved.
-///
-/// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-/// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
-/// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
-/// permit persons to whom the Software is furnished to do so, subject to the following conditions:
-///
-/// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-///
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-/// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-/// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-/// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-///
+//
+//	OGLEngine
+//
+//	Copyright (c) 2013 Matt Giger. All rights reserved.
+//
+//	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+//	documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+//	the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+//	to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+//	The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+//
+//	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+//	THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+//	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
 
 #import "OGLEngine.h"
 
@@ -32,9 +32,10 @@ CGFloat3 CGFloat3Make(CGFloat x, CGFloat y, CGFloat z)
 	return value;
 }
 
-CGFloat CGFloat3Idx(CGFloat3 a, NSInteger idx)
+CGFloat3 CGFloat3Mult(CGFloat3 a, CGFloat v)
 {
-	return (idx == 2) ? a.z : ((idx == 1) ? a.y : a.x);
+	CGFloat3 value = {a.x*v, a.y*v, a.z*v};
+	return value;
 }
 
 CGFloat4 CGFloat4Make(CGFloat x, CGFloat y, CGFloat z, CGFloat w)
@@ -125,6 +126,18 @@ CGFloat4x4 identity4x4()
 	return value;
 }
 
+
+CGFloat4x4 scaleVec4x4(CGFloat3 a)
+{
+	CGFloat4x4 value;
+	memset(value.mat, 0, 16 * sizeof(CGFloat));
+	value.mat[0][0] = a.x;
+	value.mat[1][1] = a.y;
+	value.mat[2][2] = a.z;
+	value.mat[3][3] = 1;
+	return value;
+}
+
 CGFloat4x4 scale4x4(CGFloat x, CGFloat y, CGFloat z)
 {
 	CGFloat4x4 value;
@@ -136,6 +149,17 @@ CGFloat4x4 scale4x4(CGFloat x, CGFloat y, CGFloat z)
 	return value;
 }
 
+
+CGFloat4x4 translationVec4x4(CGFloat3 a)
+{
+	CGFloat4x4 value;
+	memset(value.mat, 0, 16 * sizeof(CGFloat));
+	value.mat[0][0] = value.mat[1][1] = value.mat[2][2], value.mat[3][3] = 1;
+	value.mat[3][0] = a.x;
+	value.mat[3][1] = a.y;
+	value.mat[3][2] = a.z;
+	return value;
+}
 
 CGFloat4x4 translation4x4(CGFloat x, CGFloat y, CGFloat z)
 {

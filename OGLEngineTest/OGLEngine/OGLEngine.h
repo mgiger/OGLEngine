@@ -1,21 +1,20 @@
-///
-///  OGLEngine
-///
-/// Created by Matt Giger
-/// Copyright (c) 2013 EarthBrowser LLC. All rights reserved.
-///
-/// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-/// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
-/// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
-/// permit persons to whom the Software is furnished to do so, subject to the following conditions:
-///
-/// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-///
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-/// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-/// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-/// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-///
+//
+//	OGLEngine
+//
+//	Copyright (c) 2013 Matt Giger. All rights reserved.
+//
+//	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+//	documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+//	the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+//	to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//
+//	The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+//
+//	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+//	THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+//	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
 
 #ifndef OGLEngineTest_OGLEngine_h
 #define OGLEngineTest_OGLEngine_h
@@ -102,14 +101,16 @@ typedef OGLSceneObject* (^PinchGestureBlock)(UIPinchGestureRecognizer*);
 
 
 CGFloat3 CGFloat3Make(CGFloat x, CGFloat y, CGFloat z);
-CGFloat CGFloat3Idx(CGFloat3 a, NSInteger idx);
+CGFloat3 CGFloat3Mult(CGFloat3 a, CGFloat v);
 CGFloat4 CGFloat4Make(CGFloat x, CGFloat y, CGFloat z, CGFloat w);
 CGQuaternion CGQuaternionMake(CGFloat angle, CGFloat3 axis);
 CGFrustum CGFrustumMake(CGFloat4x4 mvp);
 CGRay CGRayMake(CGFloat3 origin, CGFloat3 direction);
 
 CGFloat4x4 identity4x4();
+CGFloat4x4 scaleVec4x4(CGFloat3 a);
 CGFloat4x4 scale4x4(CGFloat x, CGFloat y, CGFloat z);
+CGFloat4x4 translationVec4x4(CGFloat3 a);
 CGFloat4x4 translation4x4(CGFloat x, CGFloat y, CGFloat z);
 CGFloat4x4 rotation4x4(CGFloat angle, CGFloat3 axis);
 CGFloat4x4 orthographic4x4(CGFloat left, CGFloat right, CGFloat bottom, CGFloat top, CGFloat znear, CGFloat zfar);
@@ -128,5 +129,8 @@ CGRect multRect(CGFloat4x4 m, CGRect r);
 
 CGRay multRay(CGRay r, CGFloat4x4 m);
 BOOL cubeRayInersect(CGCube cube, CGRay ray, CGFloat3* hitLocation);
+
+
+extern float			_ScreenScale;
 
 #endif

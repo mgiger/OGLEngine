@@ -1,26 +1,11 @@
-///
-/// OGLEngineView
-///
-/// Created by Matt Giger
-/// Copyright (c) 2013 EarthBrowser LLC. All rights reserved.
-///
-/// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-/// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
-/// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
-/// permit persons to whom the Software is furnished to do so, subject to the following conditions:
-///
-/// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-///
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-/// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-/// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-/// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-///
-
+//
+//	OGLEngine
+//
+//	Copyright (c) 2013 Matt Giger. All rights reserved.
+//
 
 #import "OGLEngineView.h"
 #import "OGLCamera.h"
-#import "OGLSpriteLayer.h"
 #import "OGLSprite.h"
 #import "OGLCamera.h"
 #import "OGLRenderInfo.h"
@@ -28,12 +13,9 @@
 #import "OGLContext.h"
 #import "OGLTween.h"
 
-#import <OpenGLES/ES2/gl.h>
-
 const float				cScenePerspective			= 50.0f;
-const float				cContentScaleFactor			= 2.0f;
+float					_ScreenScale				= 1.0;
 
-static CGFloat			_screenScale;
 static CGSize			_touchPixelRadius;
 
 
@@ -58,8 +40,8 @@ static CGSize			_touchPixelRadius;
 
 + (void)initialize
 {
-	_screenScale = [UIScreen mainScreen].scale;
-	_touchPixelRadius = CGSizeMake(5 * _screenScale, 5 * _screenScale);
+	_ScreenScale = [UIScreen mainScreen].scale;
+	_touchPixelRadius = CGSizeMake(5 * _ScreenScale, 5 * _ScreenScale);
 }
 
 - (void)commonInit
@@ -101,7 +83,6 @@ static CGSize			_touchPixelRadius;
 	
 	_camera = [[OGLCamera alloc] init];
 	_camera.fov = cScenePerspective;
-	
 	_camera.near = 2;
 	_camera.far = 1000;
 	
@@ -316,7 +297,7 @@ static CGSize			_touchPixelRadius;
 		case UIGestureRecognizerStateEnded:
 		{
 			CGPoint tapPoint = [sender locationInView:sender.view];
-			CGPoint pt = CGPointMake(tapPoint.x * _screenScale, tapPoint.y * _screenScale);
+			CGPoint pt = CGPointMake(tapPoint.x * _ScreenScale, tapPoint.y * _ScreenScale);
 			CGRect rect = CGRectMake(pt.x -_touchPixelRadius.width, pt.y - _touchPixelRadius.height, _touchPixelRadius.width * 2, _touchPixelRadius.height * 2);
 			self.selectedObjects = [[NSArray arrayWithArray:[_userInterface findSelected:rect]] arrayByAddingObjectsFromArray:[_userInterface findSelected:rect]];
 			if([_selectedObjects count])
@@ -343,7 +324,7 @@ static CGSize			_touchPixelRadius;
 - (IBAction)handleDoubleTouch:(UITapGestureRecognizer*)sender
 {
 	CGPoint tapPoint = [sender locationInView:sender.view];
-	CGPoint pt = CGPointMake(tapPoint.x * _screenScale, tapPoint.y * _screenScale);
+	CGPoint pt = CGPointMake(tapPoint.x * _ScreenScale, tapPoint.y * _ScreenScale);
 	[_camera doubleTouchEvent:pt];
 	
 	switch (sender.state)
@@ -365,7 +346,7 @@ static CGSize			_touchPixelRadius;
 - (IBAction)handleDoubleTap:(UITapGestureRecognizer*)sender
 {
     CGPoint tapPoint = [sender locationInView:sender.view];
-	[_camera doubleTapEvent:CGPointMake(tapPoint.x * _screenScale, tapPoint.y * _screenScale)];
+	[_camera doubleTapEvent:CGPointMake(tapPoint.x * _ScreenScale, tapPoint.y * _ScreenScale)];
 }
 
 - (IBAction)handlePinchGesture:(UIPinchGestureRecognizer*)sender
@@ -376,7 +357,7 @@ static CGSize			_touchPixelRadius;
 		{
 			CGPoint p0 = [sender locationOfTouch:0 inView:self];
 			CGPoint p1 = [sender locationOfTouch:1 inView:self];
-			[_camera beginPinchWithTouch:CGPointMake(p0.x * _screenScale, p0.y * _screenScale) andTouch:CGPointMake(p1.x * _screenScale, p1.y * _screenScale)];
+			[_camera beginPinchWithTouch:CGPointMake(p0.x * _ScreenScale, p0.y * _ScreenScale) andTouch:CGPointMake(p1.x * _ScreenScale, p1.y * _ScreenScale)];
 			break;
 		}
 			
@@ -396,7 +377,7 @@ static CGSize			_touchPixelRadius;
 {
 	BOOL handled = NO;
 	CGPoint tapPoint = [sender locationInView:sender.view];
-	CGPoint pt = CGPointMake(tapPoint.x * _screenScale, tapPoint.y * _screenScale);
+	CGPoint pt = CGPointMake(tapPoint.x * _ScreenScale, tapPoint.y * _ScreenScale);
 	
 	switch (sender.state)
 	{

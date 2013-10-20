@@ -1,34 +1,14 @@
-///
-/// OGLTexture
-///
-/// Created by Matt Giger
-/// Copyright (c) 2013 EarthBrowser LLC. All rights reserved.
-///
-/// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-/// documentation files (the "Software"), to deal in the Software without restriction, including without limitation
-/// the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
-/// permit persons to whom the Software is furnished to do so, subject to the following conditions:
-///
-/// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-///
-/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-/// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-/// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-/// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-///
-
+//
+//	OGLEngine
+//
+//	Copyright (c) 2013 Matt Giger. All rights reserved.
+//
 
 #import "OGLTexture.h"
 
 static NSMutableDictionary*		_cachedTextures = nil;
 
-///////////////////////////////////////////////////////////////////////////
-///
-/// @class GLTexture
-///
-/// OpenGL texture object
-///
-///////////////////////////////////////////////////////////////////////////
+
 @implementation OGLTexture
 
 + (OGLTexture*)textureWithName:(NSString*)name
@@ -105,18 +85,7 @@ static NSMutableDictionary*		_cachedTextures = nil;
 
 @end
 
-@interface OGLTextureData()
-//@property (nonatomic, strong)	MMapFile*	map;
-@end
 
-
-///////////////////////////////////////////////////////////////////////////
-///
-/// @class OGLTextureData
-///
-/// Raw texture data
-///
-///////////////////////////////////////////////////////////////////////////
 @implementation OGLTextureData
 
 + (OGLTextureData*)dataWithPath:(NSString*)path
@@ -173,39 +142,6 @@ static NSMutableDictionary*		_cachedTextures = nil;
 	data.data = [NSMutableData dataWithLength:data.width*data.height*4];
 	return data;
 }
-
-+ (NSString*)rawPathForURL:(NSString*)url withBase:(NSString*)basePath
-{
-	NSError* error = nil;
-	NSString* fileBase = [url lastPathComponent];
-	NSArray* files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:basePath error:&error];
-	NSCharacterSet* cset = [NSCharacterSet characterSetWithCharactersInString:@"="];
-	for(NSString* filePath in files)
-	{
-		NSArray* components = [[filePath lastPathComponent] componentsSeparatedByCharactersInSet:cset];
-		if([components count] && [[components objectAtIndex:0] isEqualToString:fileBase])
-			return [NSString stringWithFormat:@"%@%@", basePath, filePath];
-	}
-	return nil;
-}
-
-//+ (OGLTextureData*)dataWithRawMMapPath:(NSString*)rawPath
-//{
-//	// parse filename for <name>_<width>_<height>_<depth>_<floatTexture(bool)>
-//	NSArray* pathComponents = [[rawPath lastPathComponent] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"="]];
-//	if([pathComponents count] == 5)
-//	{
-//		OGLTextureData* texData = [[OGLTextureData alloc] init];
-//		texData.map = [MMapFile fileWithPath:rawPath];	// hold a reference until we're done
-//		texData.data = [NSData dataWithBytesNoCopy:texData.map.data length:texData.map.size freeWhenDone:NO];
-//		texData.width = [[pathComponents objectAtIndex:1] integerValue];
-//		texData.height = [[pathComponents objectAtIndex:2] integerValue];
-//		texData.depth = [[pathComponents objectAtIndex:3] integerValue];
-//		texData.floatTexture = [[pathComponents objectAtIndex:4] integerValue];
-//		return texData;
-//	}
-//	return nil;
-//}
 
 - (id)init
 {

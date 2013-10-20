@@ -1,10 +1,9 @@
 //
-//  OGLAnnotation.m
-//  EarthBrowser
+//	OGLEngine
 //
-//  Created by Matt Giger on 6/28/12.
-//  Copyright (c) 2012 EarthBrowser LLC. All rights reserved.
+//	Copyright (c) 2013 Matt Giger. All rights reserved.
 //
+
 
 #import "OGLAnnotation.h"
 #import "OGLAnnotationView.h"
@@ -53,11 +52,12 @@ static OGLAnnotation*	_current = nil;
 		
 		[OGLTween tweenFrom:0 to:1 method:tweenOutElastic duration:.7 delay:0 identifier:nil
 			animations:^(float value) {
-				self.transform = scale4x4(value * _scaleFactor) * translation4x4(_offset * value * _scaleFactor);
+				float v = value * _scaleFactor;
+				self.transform = mult(scale4x4(v, v, v), translationVec4x4(CGFloat3Mult(self.offset, v)));
 			}
 			completion:^(BOOL finished) {
 				self.scale = CGFloat3Make(_scaleFactor, _scaleFactor, _scaleFactor);
-				self.offset = _offset * _scaleFactor;
+				self.offset = CGFloat3Mult(self.offset, _scaleFactor);
 			}
 		 ];
 	}

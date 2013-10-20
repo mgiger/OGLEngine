@@ -26,6 +26,7 @@
 		8D4BCF5E181304A4009FA9C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4BCF35181304A4009FA9C0 /* UIKit.framework */; };
 		8D4BCF66181304A4009FA9C0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D4BCF64181304A4009FA9C0 /* InfoPlist.strings */; };
 		8D4BCF68181304A4009FA9C0 /* OGLEngineTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4BCF67181304A4009FA9C0 /* OGLEngineTestTests.m */; };
+		8D4BCF9A181426B2009FA9C0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4BCF99181426B2009FA9C0 /* libsqlite3.0.dylib */; };
 		8D5B809C181403FD00D10C01 /* OGLWorkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B809B181403FD00D10C01 /* OGLWorkQueue.m */; };
 		8D82F4C41813F6BF00DCC99F /* OGLAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F49D1813F6BF00DCC99F /* OGLAnnotation.m */; };
 		8D82F4C51813F6BF00DCC99F /* OGLAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F49F1813F6BF00DCC99F /* OGLAnnotationView.m */; };
@@ -36,14 +37,12 @@
 		8D82F4CA1813F6BF00DCC99F /* OGLEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4A91813F6BF00DCC99F /* OGLEngine.m */; };
 		8D82F4CB1813F6BF00DCC99F /* OGLEngineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4AB1813F6BF00DCC99F /* OGLEngineView.m */; };
 		8D82F4CC1813F6BF00DCC99F /* OGLFramebuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4AD1813F6BF00DCC99F /* OGLFramebuffer.m */; };
-		8D82F4CD1813F6BF00DCC99F /* OGLImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4AF1813F6BF00DCC99F /* OGLImageCache.m */; };
 		8D82F4CE1813F6BF00DCC99F /* OGLLabel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4B11813F6BF00DCC99F /* OGLLabel.mm */; };
 		8D82F4CF1813F6BF00DCC99F /* OGLNetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4B31813F6BF00DCC99F /* OGLNetRequest.m */; };
 		8D82F4D01813F6BF00DCC99F /* OGLRenderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4B51813F6BF00DCC99F /* OGLRenderInfo.m */; };
 		8D82F4D11813F6BF00DCC99F /* OGLSceneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4B71813F6BF00DCC99F /* OGLSceneObject.m */; };
 		8D82F4D21813F6BF00DCC99F /* OGLShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4B91813F6BF00DCC99F /* OGLShader.m */; };
 		8D82F4D31813F6BF00DCC99F /* OGLSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4BB1813F6BF00DCC99F /* OGLSprite.m */; };
-		8D82F4D41813F6BF00DCC99F /* OGLSpriteLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4BD1813F6BF00DCC99F /* OGLSpriteLayer.m */; };
 		8D82F4D51813F6BF00DCC99F /* OGLTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4BF1813F6BF00DCC99F /* OGLTexture.m */; };
 		8D82F4D61813F6BF00DCC99F /* OGLTween.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4C11813F6BF00DCC99F /* OGLTween.m */; };
 		8D82F4D71813F6BF00DCC99F /* OGLVertexArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4C31813F6BF00DCC99F /* OGLVertexArray.m */; };
@@ -84,6 +83,7 @@
 		8D4BCF63181304A4009FA9C0 /* OGLEngineTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OGLEngineTestTests-Info.plist"; sourceTree = "<group>"; };
 		8D4BCF65181304A4009FA9C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8D4BCF67181304A4009FA9C0 /* OGLEngineTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OGLEngineTestTests.m; sourceTree = "<group>"; };
+		8D4BCF99181426B2009FA9C0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		8D5B809A181403FD00D10C01 /* OGLWorkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLWorkQueue.h; sourceTree = "<group>"; };
 		8D5B809B181403FD00D10C01 /* OGLWorkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLWorkQueue.m; sourceTree = "<group>"; };
 		8D82F49C1813F6BF00DCC99F /* OGLAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLAnnotation.h; sourceTree = "<group>"; };
@@ -104,8 +104,6 @@
 		8D82F4AB1813F6BF00DCC99F /* OGLEngineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLEngineView.m; sourceTree = "<group>"; };
 		8D82F4AC1813F6BF00DCC99F /* OGLFramebuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLFramebuffer.h; sourceTree = "<group>"; };
 		8D82F4AD1813F6BF00DCC99F /* OGLFramebuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLFramebuffer.m; sourceTree = "<group>"; };
-		8D82F4AE1813F6BF00DCC99F /* OGLImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLImageCache.h; sourceTree = "<group>"; };
-		8D82F4AF1813F6BF00DCC99F /* OGLImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLImageCache.m; sourceTree = "<group>"; };
 		8D82F4B01813F6BF00DCC99F /* OGLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLLabel.h; sourceTree = "<group>"; };
 		8D82F4B11813F6BF00DCC99F /* OGLLabel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGLLabel.mm; sourceTree = "<group>"; };
 		8D82F4B21813F6BF00DCC99F /* OGLNetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLNetRequest.h; sourceTree = "<group>"; };
@@ -118,8 +116,6 @@
 		8D82F4B91813F6BF00DCC99F /* OGLShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLShader.m; sourceTree = "<group>"; };
 		8D82F4BA1813F6BF00DCC99F /* OGLSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLSprite.h; sourceTree = "<group>"; };
 		8D82F4BB1813F6BF00DCC99F /* OGLSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLSprite.m; sourceTree = "<group>"; };
-		8D82F4BC1813F6BF00DCC99F /* OGLSpriteLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLSpriteLayer.h; sourceTree = "<group>"; };
-		8D82F4BD1813F6BF00DCC99F /* OGLSpriteLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLSpriteLayer.m; sourceTree = "<group>"; };
 		8D82F4BE1813F6BF00DCC99F /* OGLTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLTexture.h; sourceTree = "<group>"; };
 		8D82F4BF1813F6BF00DCC99F /* OGLTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLTexture.m; sourceTree = "<group>"; };
 		8D82F4C01813F6BF00DCC99F /* OGLTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLTween.h; sourceTree = "<group>"; };
@@ -133,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D4BCF9A181426B2009FA9C0 /* libsqlite3.0.dylib in Frameworks */,
 				8D4BCF3A181304A4009FA9C0 /* OpenGLES.framework in Frameworks */,
 				8D4BCF34181304A4009FA9C0 /* CoreGraphics.framework in Frameworks */,
 				8D4BCF36181304A4009FA9C0 /* UIKit.framework in Frameworks */,
@@ -176,6 +173,7 @@
 		8D4BCF30181304A4009FA9C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8D4BCF99181426B2009FA9C0 /* libsqlite3.0.dylib */,
 				8D4BCF31181304A4009FA9C0 /* Foundation.framework */,
 				8D4BCF33181304A4009FA9C0 /* CoreGraphics.framework */,
 				8D4BCF35181304A4009FA9C0 /* UIKit.framework */,
@@ -254,8 +252,6 @@
 				8D82F4AB1813F6BF00DCC99F /* OGLEngineView.m */,
 				8D82F4AC1813F6BF00DCC99F /* OGLFramebuffer.h */,
 				8D82F4AD1813F6BF00DCC99F /* OGLFramebuffer.m */,
-				8D82F4AE1813F6BF00DCC99F /* OGLImageCache.h */,
-				8D82F4AF1813F6BF00DCC99F /* OGLImageCache.m */,
 				8D82F4B01813F6BF00DCC99F /* OGLLabel.h */,
 				8D82F4B11813F6BF00DCC99F /* OGLLabel.mm */,
 				8D82F4B21813F6BF00DCC99F /* OGLNetRequest.h */,
@@ -268,8 +264,6 @@
 				8D82F4B91813F6BF00DCC99F /* OGLShader.m */,
 				8D82F4BA1813F6BF00DCC99F /* OGLSprite.h */,
 				8D82F4BB1813F6BF00DCC99F /* OGLSprite.m */,
-				8D82F4BC1813F6BF00DCC99F /* OGLSpriteLayer.h */,
-				8D82F4BD1813F6BF00DCC99F /* OGLSpriteLayer.m */,
 				8D82F4BE1813F6BF00DCC99F /* OGLTexture.h */,
 				8D82F4BF1813F6BF00DCC99F /* OGLTexture.m */,
 				8D82F4C01813F6BF00DCC99F /* OGLTween.h */,
@@ -385,8 +379,6 @@
 				8D82F4D51813F6BF00DCC99F /* OGLTexture.m in Sources */,
 				8D82F4C51813F6BF00DCC99F /* OGLAnnotationView.m in Sources */,
 				8D82F4D71813F6BF00DCC99F /* OGLVertexArray.m in Sources */,
-				8D82F4D41813F6BF00DCC99F /* OGLSpriteLayer.m in Sources */,
-				8D82F4CD1813F6BF00DCC99F /* OGLImageCache.m in Sources */,
 				8D4BCF53181304A4009FA9C0 /* ViewController.m in Sources */,
 				8D82F4CC1813F6BF00DCC99F /* OGLFramebuffer.m in Sources */,
 				8D82F4D31813F6BF00DCC99F /* OGLSprite.m in Sources */,

@@ -1,9 +1,7 @@
 //
-//  OGLWorkQueue.m
-//  EarthBrowser
+//	OGLEngine
 //
-//  Created by Matthew Giger on 8/3/12.
-//  Copyright (c) 2012 EarthBrowser LLC. All rights reserved.
+//	Copyright (c) 2013 Matt Giger. All rights reserved.
 //
 
 #import "OGLWorkQueue.h"

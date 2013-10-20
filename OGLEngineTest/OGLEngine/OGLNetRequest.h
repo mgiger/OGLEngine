@@ -1,9 +1,7 @@
 //
-//  OGLNetRequest.h
-//  EarthBrowser
+//	OGLEngine
 //
-//  Created by Matt Giger on 6/23/12.
-//  Copyright (c) 2012 EarthBrowser LLC. All rights reserved.
+//	Copyright (c) 2013 Matt Giger. All rights reserved.
 //
 
 @interface OGLNetRequest : NSOperation
