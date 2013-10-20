@@ -32,6 +32,11 @@ CGFloat3 CGFloat3Make(CGFloat x, CGFloat y, CGFloat z)
 	return value;
 }
 
+CGFloat CGFloat3Idx(CGFloat3 a, NSInteger idx)
+{
+	return (idx == 2) ? a.z : ((idx == 1) ? a.y : a.x);
+}
+
 CGFloat4 CGFloat4Make(CGFloat x, CGFloat y, CGFloat z, CGFloat w)
 {
 	CGFloat4 value = {x, y, z, w};
@@ -451,3 +456,75 @@ CGRay multRay(CGRay r, CGFloat4x4 m)
 	return CGRayMake(o, normalVec3(CGFloat3Make(d.x, d.y, d.z)));
 }
 
+BOOL cubeRayInersect(CGCube cube, CGRay ray, CGFloat3* hitLocation)
+{
+	enum { q_left = -1, q_middle = 0, q_right };
+	
+	CGFloat rorig[3] = {ray.origin.x, ray.origin.y, ray.origin.z};
+	CGFloat rdir[3] = {ray.direction.x, ray.direction.y, ray.direction.z};
+	CGFloat maxc[3] = {cube.maxc.x, cube.maxc.y, cube.maxc.z};
+	CGFloat minc[3] = {cube.minc.x, cube.minc.y, cube.minc.z};
+	
+	int quad[3];
+	CGFloat cplane[3];
+	BOOL inside = YES;
+	for(int i=0;i<3;++i)
+	{
+		if(rorig[i] < minc[i])
+		{
+			quad[i] = q_left;
+			cplane[i] = minc[i];
+			inside = NO;
+		}
+		else if(rorig[i] > maxc[i])
+		{
+			quad[i] = q_right;
+			cplane[i] = maxc[i];
+			inside = NO;
+		}
+		else
+		{
+			quad[i] = q_middle;
+		}
+	}
+	
+	if(inside)
+	{
+		*hitLocation = ray.origin;
+		return YES;
+	}
+	
+	CGFloat max_t[3];
+	for(int i=0;i<3;++i)
+	{
+		if(quad[i] != q_middle && rdir[i] != 0.)
+			max_t[i] = (cplane[i] - rorig[i]) / rdir[i];
+		else
+			max_t[i] = -1;
+	}
+	
+	int which_plane = 0;
+	for(int i=1;i<3;++i)
+		if(max_t[which_plane] < max_t[i])
+			which_plane = i;
+	
+	if(max_t[which_plane] < 0.)
+		return NO;
+	
+	CGFloat coord[3];
+	for(int i=0;i<3;++i)
+	{
+		if(which_plane != i)
+		{
+			coord[i] = rorig[i] + max_t[which_plane] * rdir[i];
+			if(coord[i] < minc[i] || coord[i] > maxc[i])
+				return NO;
+		}
+		else
+			coord[i] = cplane[i];
+	}
+	
+	*hitLocation = CGFloat3Make(coord[0], coord[1], coord[2]);
+	
+	return YES;
+}

@@ -1,5 +1,5 @@
 ///
-/// OGLShader
+/// OGLTween
 ///
 /// Created by Matt Giger
 /// Copyright (c) 2013 EarthBrowser LLC. All rights reserved.
@@ -17,49 +17,34 @@
 /// CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ///
 
+typedef enum {
+	tweenLinear,
+	tweenInQuad,
+	tweenOutQuad,
+	tweenInBounce,
+	tweenOutBounce,
+	tweenInElastic,
+	tweenOutElastic
+} OGLTweenMethod;
 
-#import "OGLEngine.h"
+@interface OGLTween : NSObject
 
-#define STRINGIFY(x)	#x
-#define NSSTRINGIFY(x)	@ STRINGIFY(x)
++ (BOOL)tweensActive;
 
-@class OGLRenderInfo;
++ (void)tweenFrom:(float)from
+			   to:(float)to
+		   method:(OGLTweenMethod)method
+		 duration:(NSTimeInterval)duration
+			delay:(NSTimeInterval)delay
+	   identifier:(NSString*)identifier
+	   animations:(void (^)(float value))animations
+	   completion:(void (^)(BOOL finished))completion;
 
-///////////////////////////////////////////////////////////////////////////
-///
-/// @class OGLShader
-///
-/// Shader program object
-///
-///////////////////////////////////////////////////////////////////////////
-@interface OGLShader : NSObject
-
-@property (nonatomic, assign)	uint		program;
-@property (nonatomic, copy)		NSString*	vertSource;
-@property (nonatomic, copy)		NSString*	fragSource;
-
-- (BOOL)loadShader;
-
-- (int)uniformForName:(NSString*)name;
-- (int)attributeForName:(NSString*)name;
-
-- (BOOL)bindShader:(OGLRenderInfo*)info;
-- (void)unbindShader:(OGLRenderInfo*)info;
-
-@end
++ (void)tweenDelay:(NSTimeInterval)delay
+		identifier:(NSString*)identifier
+		completion:(void (^)(BOOL finished))completion;
 
 
-///////////////////////////////////////////////////////////////////////////
-///
-/// @class OGLFlatShader
-///
-/// Shader to draw flat texture
-///
-///////////////////////////////////////////////////////////////////////////
-@interface OGLFlatShader : OGLShader
-
-@property (nonatomic, assign)	CGFloat4	color;
-
-+ (OGLFlatShader*)shader;
++ (void)cancel:(NSString*)identifier;
 
 @end

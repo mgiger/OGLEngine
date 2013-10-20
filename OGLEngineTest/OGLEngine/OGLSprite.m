@@ -24,6 +24,7 @@
 #import "OGLContext.h"
 #import "OGLTexture.h"
 #import "OGLVertexArray.h"
+#import "OGLShader.h"
 
 static NSMutableDictionary*		_iconTextures;
 
@@ -195,24 +196,24 @@ static NSMutableDictionary*		_iconTextures;
 		}
 	}
 	
-	[ImageCache loadDBImage:imageURL withCompletion:^(OGLTextureData* data)
-	{
-		self.texture = [[OGLTexture alloc] init];
-		[self.texture uploadData:data];
-		self.texture.available = YES;
-		
-		_size = _texsize = float2(data.width, data.height);
-		if(centered)
-			_offset = float3(_size.x, _size.y, 0) * -0.5f;
-		[self buildGeometry];
-		[self updateTransform];
-		[self updateBounds];
-		
-		@synchronized(_iconTextures)
-		{
-			[_iconTextures setValue:_texture forKey:imageURL];
-		}
-	}];
+//	[ImageCache loadDBImage:imageURL withCompletion:^(OGLTextureData* data)
+//	{
+//		self.texture = [[OGLTexture alloc] init];
+//		[self.texture uploadData:data];
+//		self.texture.available = YES;
+//		
+//		_size = _texsize = float2(data.width, data.height);
+//		if(centered)
+//			_offset = float3(_size.x, _size.y, 0) * -0.5f;
+//		[self buildGeometry];
+//		[self updateTransform];
+//		[self updateBounds];
+//		
+//		@synchronized(_iconTextures)
+//		{
+//			[_iconTextures setValue:_texture forKey:imageURL];
+//		}
+//	}];
 }
 
 - (void)buildGeometry
@@ -254,7 +255,7 @@ static NSMutableDictionary*		_iconTextures;
 		
 		if(self.hasGeometry && _texture.available && _vertexBuf.available)
 		{
-			TextShader* shader = [TextShader shader];
+			OGLFlatShader* shader = [OGLFlatShader shader];
 			[shader bindShader:info];
 			shader.color = _color;
 			[_texture bindTo:info.tex0Binding unit:0];
@@ -278,14 +279,6 @@ static NSMutableDictionary*		_iconTextures;
 				[_vertexBuf unbind];
 				[_varray unbind];
 			}
-			
-//			[_vertexBuf bind];
-//			glEnableVertexAttribArray(info.vcoordBinding);
-//			glEnableVertexAttribArray(info.tcoordBinding);
-//			glVertexAttribPointer(info.vcoordBinding, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), 0);
-//			glVertexAttribPointer(info.tcoordBinding, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), (char*)sizeof(float2));
-//			glDrawArrays(GL_TRIANGLES, 0, 6);
-//			[_vertexBuf unbind];
 			
 			[_texture unbind];
 		}

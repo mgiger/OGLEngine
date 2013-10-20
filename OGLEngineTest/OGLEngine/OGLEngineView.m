@@ -26,6 +26,7 @@
 #import "OGLRenderInfo.h"
 #import "OGLSceneObject.h"
 #import "OGLContext.h"
+#import "OGLTween.h"
 
 #import <OpenGLES/ES2/gl.h>
 
@@ -275,9 +276,9 @@ static CGSize			_touchPixelRadius;
 	// check to make sure we need to render
 	static double lastTime = 0;
 	static BOOL isBusy = NO;	// set to YES if updating values
-	if(!isBusy && ![EBTween tweensActive] && !_camera.active)
+	if(!isBusy && ![OGLTween tweensActive] && !_camera.active)
 	{
-		double ftime = [EBClock sharedClock].frameTime;
+		double ftime = CFAbsoluteTimeGetCurrent();
 		if(fabs(lastTime - ftime) < 0.5)
 			return;
 		lastTime = ftime;

@@ -106,7 +106,7 @@ static NSMutableDictionary*		_cachedTextures = nil;
 @end
 
 @interface OGLTextureData()
-@property (nonatomic, strong)	MMapFile*	map;
+//@property (nonatomic, strong)	MMapFile*	map;
 @end
 
 
@@ -189,23 +189,23 @@ static NSMutableDictionary*		_cachedTextures = nil;
 	return nil;
 }
 
-+ (OGLTextureData*)dataWithRawPath:(NSString*)rawPath
-{
-	// parse filename for <name>_<width>_<height>_<depth>_<floatTexture(bool)>
-	NSArray* pathComponents = [[rawPath lastPathComponent] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"="]];
-	if([pathComponents count] == 5)
-	{
-		OGLTextureData* texData = [[OGLTextureData alloc] init];
-		texData.map = [MMapFile fileWithPath:rawPath];	// hold a reference until we're done
-		texData.data = [NSData dataWithBytesNoCopy:texData.map.data length:texData.map.size freeWhenDone:NO];
-		texData.width = [[pathComponents objectAtIndex:1] integerValue];
-		texData.height = [[pathComponents objectAtIndex:2] integerValue];
-		texData.depth = [[pathComponents objectAtIndex:3] integerValue];
-		texData.floatTexture = [[pathComponents objectAtIndex:4] integerValue];
-		return texData;
-	}
-	return nil;
-}
+//+ (OGLTextureData*)dataWithRawMMapPath:(NSString*)rawPath
+//{
+//	// parse filename for <name>_<width>_<height>_<depth>_<floatTexture(bool)>
+//	NSArray* pathComponents = [[rawPath lastPathComponent] componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"="]];
+//	if([pathComponents count] == 5)
+//	{
+//		OGLTextureData* texData = [[OGLTextureData alloc] init];
+//		texData.map = [MMapFile fileWithPath:rawPath];	// hold a reference until we're done
+//		texData.data = [NSData dataWithBytesNoCopy:texData.map.data length:texData.map.size freeWhenDone:NO];
+//		texData.width = [[pathComponents objectAtIndex:1] integerValue];
+//		texData.height = [[pathComponents objectAtIndex:2] integerValue];
+//		texData.depth = [[pathComponents objectAtIndex:3] integerValue];
+//		texData.floatTexture = [[pathComponents objectAtIndex:4] integerValue];
+//		return texData;
+//	}
+//	return nil;
+//}
 
 - (id)init
 {

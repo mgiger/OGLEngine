@@ -100,6 +100,7 @@ typedef OGLSceneObject* (^PinchGestureBlock)(UIPinchGestureRecognizer*);
 
 
 CGFloat3 CGFloat3Make(CGFloat x, CGFloat y, CGFloat z);
+CGFloat CGFloat3Idx(CGFloat3 a, NSInteger idx);
 CGFloat4 CGFloat4Make(CGFloat x, CGFloat y, CGFloat z, CGFloat w);
 CGQuaternion CGQuaternionMake(CGFloat angle, CGFloat3 axis);
 CGFrustum CGFrustumMake(CGFloat4x4 mvp);
@@ -124,6 +125,6 @@ CGFloat4x4 inverse(CGFloat4x4 m);
 CGRect multRect(CGFloat4x4 m, CGRect r);
 
 CGRay multRay(CGRay r, CGFloat4x4 m);
-
+BOOL cubeRayInersect(CGCube cube, CGRay ray, CGFloat3* hitLocation);
 
 #endif

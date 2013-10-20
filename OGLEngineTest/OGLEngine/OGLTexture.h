@@ -68,7 +68,7 @@
 + (OGLTextureData*)dataWithFloat:(void*)ptr length:(int)length size:(CGSize)size noCopy:(BOOL)noCopy;
 + (OGLTextureData*)blankData:(CGSize)size;
 + (NSString*)rawPathForURL:(NSString*)url withBase:(NSString*)basePath;
-+ (OGLTextureData*)dataWithRawPath:(NSString*)rawPath;
+//+ (OGLTextureData*)dataWithRawMMapPath:(NSString*)rawPath;
 
 - (void)loadResourcePath:(NSString*)path;
 - (void)loadCGImage:(CGImageRef)imageRef;

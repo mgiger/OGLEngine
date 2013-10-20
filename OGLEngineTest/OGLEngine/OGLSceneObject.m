@@ -130,7 +130,7 @@
 				// inverse transform the ray and test for intersection
 				CGFloat3 objectPos;
 				CGRay hitRay = multRay(r, invgx);
-				if(obj.bbox.intersects(hitRay, objectPos))
+				if(cubeRayInersect(obj.bbox, hitRay, &objectPos))
 				{
 					HitInfo* hit = [[HitInfo alloc] init];
 					[hit setHitRay:hitRay];

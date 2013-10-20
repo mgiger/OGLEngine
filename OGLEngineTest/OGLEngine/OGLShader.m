@@ -23,13 +23,6 @@
 #include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES2/glext.h>
 
-@interface OGLShader()
-
-+ (uint)compileShader:(NSString*)name ofType:(int)type;
-+ (uint)compileShaderString:(NSString*)source ofType:(int)type;
-
-@end
-
 ///////////////////////////////////////////////////////////////////////////
 ///
 /// @class OGLShader
@@ -43,7 +36,6 @@
 {
 	if(self = [super init])
 	{
-		_alpha = 1.0f;
 	}
 	return self;
 }
@@ -164,5 +156,102 @@
 	return shader;
 }
 
+
+@end
+
+
+
+///////////////////////////////////////////////////////////////////////////
+///
+/// @class OGLFlatShader
+///
+/// Shader to draw flat texture
+///
+///////////////////////////////////////////////////////////////////////////
+@interface OGLFlatShader()
+{
+	int		_vcoordBinding;
+	int		_tcoordBinding;
+	int		_texBinding;
+	int		_mvpBinding;
+	int		_colorBinding;
+}
+
+@end
+
+static OGLFlatShader*	_instance;
+
+@implementation OGLFlatShader
+
++ (OGLFlatShader*)shader
+{
+	if(!_instance)
+		_instance = [[OGLFlatShader alloc] init];
+	return _instance;
+}
+
+- (id)init
+{
+	if(self = [super init])
+	{
+		self.vertSource = NSSTRINGIFY
+		(
+		 attribute vec4			position;
+		 attribute vec2			texcoord;
+		 uniform mat4			modelViewProjMat;
+		 varying vec2			v_texcoord;
+		 
+		 void main()
+		 {
+			 v_texcoord = texcoord;
+			 gl_Position = modelViewProjMat * position;
+		 }
+		 );
+		
+		self.fragSource = NSSTRINGIFY
+		(
+		 precision mediump float;
+		 uniform sampler2D		s_texture;
+		 uniform vec4			color;
+		 varying vec2			v_texcoord;
+		 
+		 void main()
+		 {
+			 gl_FragColor = texture2D(s_texture, v_texcoord) * color;
+		 }
+		 );
+		
+		[self loadShader];
+		
+		_vcoordBinding = [self attributeForName:@"position"];
+		_tcoordBinding = [self attributeForName:@"texcoord"];
+		_texBinding = [self uniformForName:@"s_texture"];
+		
+		_mvpBinding = [self uniformForName:@"modelViewProjMat"];
+		_colorBinding = [self uniformForName:@"color"];
+	}
+	return self;
+}
+
+- (void)setColor:(CGFloat4)color
+{
+	_color = color;
+	glUniform4fv(_colorBinding, 1, &_color.x);
+}
+
+- (BOOL)bindShader:(OGLRenderInfo*)info
+{
+	if([super bindShader:info])
+	{
+		info.vcoordBinding = _vcoordBinding;
+		info.tcoordBinding = _tcoordBinding;
+		info.tex0Binding = _texBinding;
+	}
+	
+	glUniformMatrix4fv(_mvpBinding, 1, false, &info.modelViewProjection.mat[0][0]);
+	glUniform4fv(_colorBinding, 1, &_color.x);
+	
+	return YES;
+}
 
 @end
