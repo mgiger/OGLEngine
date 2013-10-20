@@ -7,22 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "OGLTestViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-	
-	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	self.window.backgroundColor = [UIColor blackColor];
-	
-	OGLTestViewController* controller = [[OGLTestViewController alloc] initWithNibName:nil bundle:nil];
-	self.window.rootViewController = controller;
-	
-	[self.window makeKeyAndVisible];
-	
 	return YES;
 }
 							

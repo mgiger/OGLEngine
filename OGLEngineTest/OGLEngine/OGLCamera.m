@@ -35,10 +35,13 @@
 {
 	if(self = [super init])
 	{
-//		_position = float3(0,0,0);
-//		_forward = float3(0,0,-1);
-//		_up = float3(0,1,0);
-//		_screenSize = int2(1);
+		_position = CGFloat3Make(0, 0, 0);
+		_forward = CGFloat3Make(0, 0, -1);
+		_up = CGFloat3Make(0, 1, 0);
+		_screenSize = CGSizeMake(1, 1);
+		_transform = identity4x4();
+		_modelview = identity4x4();
+		_mvp = identity4x4();
 	}
 	return self;
 }

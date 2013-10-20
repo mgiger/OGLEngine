@@ -69,14 +69,31 @@ static CGSize			_touchPixelRadius;
 	[[OGLContext main] setCurrent];
 	
 	
-	[self startRendering];
+	UITapGestureRecognizer* touchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    touchGesture.numberOfTouchesRequired = 1;
+	touchGesture.cancelsTouchesInView = NO;
+    [self addGestureRecognizer:touchGesture];
 	
-	_orientation = UIDeviceOrientationPortrait;
+	UITapGestureRecognizer* singleFingerDTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
+    singleFingerDTap.numberOfTapsRequired = 2;
+    [self addGestureRecognizer:singleFingerDTap];
 	
-	[[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+	UITapGestureRecognizer* doubleTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTouch:)];
+    doubleTouchGesture.numberOfTouchesRequired = 2;
+    [self addGestureRecognizer:doubleTouchGesture];
+	
+    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+    [self addGestureRecognizer:panGesture];
+	
+    UIPinchGestureRecognizer* pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
+    [self addGestureRecognizer:pinchGesture];
+	
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+	
+	_orientation = UIDeviceOrientationPortrait;
 	
 	_camera = [[OGLCamera alloc] init];
 	_camera.fov = cScenePerspective;
@@ -101,6 +118,7 @@ static CGSize			_touchPixelRadius;
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);		// best for transparency
 	
+	[self startRendering];
 }
 
 - (id)init
@@ -127,48 +145,6 @@ static CGSize			_touchPixelRadius;
 		[self commonInit];
 	}
 	return self;
-}
-
-- (void)initView
-{
-	NSUserDefaults* def = [NSUserDefaults standardUserDefaults];
-	if(![def boolForKey:@"settingsSet"])
-	{
-		[def setBool:YES forKey:@"settingsSet"];
-		
-		[def setBool:YES forKey:@"stars"];
-		[def setBool:YES forKey:@"shadows"];
-		[def setBool:YES forKey:@"clouds"];
-		[def setBool:YES forKey:@"weather"];
-		[def setBool:YES forKey:@"storms"];
-		[def setBool:YES forKey:@"quakes"];
-		
-		[def setBool:NO forKey:@"animating"];
-		[def setFloat:3*24/24.0f forKey:@"clockStartOffset"];
-		[def setFloat:1.5*24/24.0f forKey:@"clockEndOffset"];
-		[def setFloat:5*60*60.0f forKey:@"animationSpeed"];
-		[def synchronize];
-	}
-	
-	
-	UITapGestureRecognizer* touchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-    touchGesture.numberOfTouchesRequired = 1;
-	touchGesture.cancelsTouchesInView = NO;
-    [self addGestureRecognizer:touchGesture];
-	
-	UITapGestureRecognizer* singleFingerDTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
-    singleFingerDTap.numberOfTapsRequired = 2;
-    [self addGestureRecognizer:singleFingerDTap];
-	
-	UITapGestureRecognizer* doubleTouchGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTouch:)];
-    doubleTouchGesture.numberOfTouchesRequired = 2;
-    [self addGestureRecognizer:doubleTouchGesture];
-	
-    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
-    [self addGestureRecognizer:panGesture];
-	
-    UIPinchGestureRecognizer* pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
-    [self addGestureRecognizer:pinchGesture];
 }
 
 - (void) dealloc
@@ -272,7 +248,7 @@ static CGSize			_touchPixelRadius;
 	// render the main scene
 	[_rootObject render:info];
 	
-	// render the orthographic sprite layer first
+	// render the orthographic sprite layer
 	glClear(GL_DEPTH_BUFFER_BIT);
 	[info resetTransforms];
 	[_userInterface render:info];

@@ -15,6 +15,7 @@
 	{
 		_visible = YES;
 		_hasGeometry = NO;
+		_transform = identity4x4();
 		
 		_children = [[NSMutableArray alloc] init];
 	}

@@ -277,14 +277,15 @@ static NSMutableDictionary*		_iconTextures;
 		_vertexBuf = [[OGLBuffer alloc] initArrayBuffer];
 	_vertexBuf.available = NO;
 	
+	NSData* data = [NSData dataWithBytesNoCopy:quadbuf length:sizeof(quadbuf) freeWhenDone:NO];
 	if([[NSThread currentThread] isMainThread])
 	{
-		[_vertexBuf uploadData:[NSData dataWithBytesNoCopy:quadbuf length:sizeof(quadbuf) freeWhenDone:NO]];
+		[_vertexBuf uploadData:data];
 		_vertexBuf.available = YES;
 	}
 	else
 	{
-		[[OGLContext worker] uploadData:[NSData dataWithBytesNoCopy:quadbuf length:sizeof(quadbuf) freeWhenDone:NO] intoBuffer:_vertexBuf];
+		[[OGLContext worker] uploadData:data intoBuffer:_vertexBuf];
 	}
 }
 
@@ -304,26 +305,35 @@ static NSMutableDictionary*		_iconTextures;
 			shader.color = _color;
 			[_texture bindTo:info.tex0Binding unit:0];
 			
-			if(!_varray)
-			{
-				_varray = [[OGLVertexArray alloc] init];
-				[_varray bind];
-				[_vertexBuf bind];
-				glEnableVertexAttribArray(info.vcoordBinding);
-				glEnableVertexAttribArray(info.tcoordBinding);
-				glVertexAttribPointer(info.vcoordBinding, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), 0);
-				glVertexAttribPointer(info.tcoordBinding, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), (char*)sizeof(CGPoint));
-				[_vertexBuf unbind];
-				[_varray unbind];
-			}
-			{
-				[_varray bind];
-				[_vertexBuf bind];
-				glDrawArrays(GL_TRIANGLES, 0, 6);
-				[_vertexBuf unbind];
-				[_varray unbind];
-			}
+//			if(!_varray)
+//			{
+//				_varray = [[OGLVertexArray alloc] init];
+//				[_varray bind];
+//				[_vertexBuf bind];
+//				glEnableVertexAttribArray(info.vcoordBinding);
+//				glEnableVertexAttribArray(info.tcoordBinding);
+//				glVertexAttribPointer(info.vcoordBinding, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), 0);
+//				glVertexAttribPointer(info.tcoordBinding, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), (char*)sizeof(CGPoint));
+//				[_vertexBuf unbind];
+//				[_varray unbind];
+//			}
+//			{
+//				[_varray bind];
+//				[_vertexBuf bind];
+//				glDrawArrays(GL_TRIANGLES, 0, 6);
+//				[_vertexBuf unbind];
+//				[_varray unbind];
+//			}
+
 			
+			[_vertexBuf bind];
+			glEnableVertexAttribArray(info.vcoordBinding);
+			glEnableVertexAttribArray(info.tcoordBinding);
+			glVertexAttribPointer(info.vcoordBinding, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), 0);
+			glVertexAttribPointer(info.tcoordBinding, 2, GL_FLOAT, GL_FALSE, 4*sizeof(float), (char*)sizeof(CGPoint));
+			glDrawArrays(GL_TRIANGLES, 0, 6);
+			[_vertexBuf unbind];
+
 			[_texture unbind];
 		}
 		

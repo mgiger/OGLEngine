@@ -121,7 +121,7 @@ CGFloat4x4 identity4x4()
 {
 	CGFloat4x4 value;
 	memset(value.mat, 0, 16 * sizeof(CGFloat));
-	value.mat[0][0] = value.mat[1][1] = value.mat[2][2], value.mat[3][3] = 1;
+	value.mat[0][0] = value.mat[1][1] = value.mat[2][2] = value.mat[3][3] = 1;
 	return value;
 }
 
@@ -153,7 +153,7 @@ CGFloat4x4 translationVec4x4(CGFloat3 a)
 {
 	CGFloat4x4 value;
 	memset(value.mat, 0, 16 * sizeof(CGFloat));
-	value.mat[0][0] = value.mat[1][1] = value.mat[2][2], value.mat[3][3] = 1;
+	value.mat[0][0] = value.mat[1][1] = value.mat[2][2] = value.mat[3][3] = 1;
 	value.mat[3][0] = a.x;
 	value.mat[3][1] = a.y;
 	value.mat[3][2] = a.z;
@@ -164,7 +164,7 @@ CGFloat4x4 translation4x4(CGFloat x, CGFloat y, CGFloat z)
 {
 	CGFloat4x4 value;
 	memset(value.mat, 0, 16 * sizeof(CGFloat));
-	value.mat[0][0] = value.mat[1][1] = value.mat[2][2], value.mat[3][3] = 1;
+	value.mat[0][0] = value.mat[1][1] = value.mat[2][2] = value.mat[3][3] = 1;
 	value.mat[3][0] = x;
 	value.mat[3][1] = y;
 	value.mat[3][2] = z;

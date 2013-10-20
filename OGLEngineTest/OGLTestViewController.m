@@ -8,10 +8,13 @@
 
 #import "OGLTestViewController.h"
 #import "OGLEngineView.h"
+#import "OGLSprite.h"
 
 @interface OGLTestViewController ()
 
 @property (nonatomic, strong)	IBOutlet	OGLEngineView*	engine;
+
+@property (nonatomic, strong)				OGLSprite*		featureButton;
 
 @end
 
@@ -29,7 +32,19 @@
 {
 	[super viewDidLoad];
 	
-	_engine.backColor = CGFloat4Make(1, 0, 0, 1);
+	_engine.backColor = CGFloat4Make(1,1,1,1);
+	
+	__weak OGLTestViewController* weak_self = self;
+	
+	_featureButton = [[OGLSprite alloc] init];
+	[_featureButton setImageName:@"gearIcon" centered:NO];
+	_featureButton.alpha = 0.65f;
+//	_featureButton.offset = CGFloat3Make(10, 10, 20);
+	[_engine.userInterface addChild:_featureButton];
+	_featureButton.tapEventHandler = ^(UITapGestureRecognizer* gesture)
+	{
+		return weak_self.featureButton;
+	};
 }
 
 - (void)didReceiveMemoryWarning

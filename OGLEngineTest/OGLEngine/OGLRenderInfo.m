@@ -32,6 +32,10 @@
 		self.spriteLayer = slayer;
 		_screenWidth = cam.screenSize.width;
 		_screenHeight = cam.screenSize.height;
+		
+		_projection = identity4x4();
+		_modelView = identity4x4();
+		_modelViewProjection = identity4x4();
 	}
 	return self;
 }
@@ -46,7 +50,7 @@
 		[_modelViewStack removeLastObject];
 		
 		val = [_modelViewProjectionStack objectAtIndex:[_modelViewProjectionStack count] - 1];
-		[val getValue:&_modelView];
+		[val getValue:&_modelViewProjection];
 		[_modelViewProjectionStack removeLastObject];
 	}
 }
