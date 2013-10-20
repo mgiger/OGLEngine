@@ -61,8 +61,6 @@ static CGSize			_touchPixelRadius;
 	(void)[[OGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2 withSharegroup:_mainContext.context.sharegroup];
 	(void)[[OGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2 withSharegroup:_mainContext.context.sharegroup];
 	
-	self.backgroundColor = [UIColor blackColor];
-	
 	self.drawableColorFormat = GLKViewDrawableColorFormatRGBA8888;
 	self.drawableDepthFormat = GLKViewDrawableDepthFormat16;
 	self.drawableStencilFormat = GLKViewDrawableStencilFormatNone;
@@ -176,6 +174,9 @@ static CGSize			_touchPixelRadius;
 - (void) dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
+    if ([EAGLContext currentContext] == self.context)
+        [EAGLContext setCurrentContext:nil];
 }
 
 - (void)didEnterBackground:(id)sender
@@ -254,8 +255,8 @@ static CGSize			_touchPixelRadius;
 	[_camera render:info];
 	
 	// check to make sure we need to render
-	static double lastTime = 0;
 	static BOOL isBusy = NO;	// set to YES if updating values
+	static double lastTime = 0;
 	if(!isBusy && ![OGLTween tweensActive] && !_camera.active)
 	{
 		double ftime = CFAbsoluteTimeGetCurrent();
@@ -265,7 +266,7 @@ static CGSize			_touchPixelRadius;
 	}
 	
 	glViewport(0, 0, self.drawableWidth, self.drawableHeight);
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(_backColor.x, _backColor.y, _backColor.z, _backColor.w);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
 	// render the main scene

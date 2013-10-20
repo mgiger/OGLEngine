@@ -15,12 +15,6 @@
 		8D4BCF40181304A4009FA9C0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D4BCF3E181304A4009FA9C0 /* InfoPlist.strings */; };
 		8D4BCF42181304A4009FA9C0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4BCF41181304A4009FA9C0 /* main.m */; };
 		8D4BCF46181304A4009FA9C0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4BCF45181304A4009FA9C0 /* AppDelegate.m */; };
-		8D4BCF49181304A4009FA9C0 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4BCF47181304A4009FA9C0 /* Main_iPhone.storyboard */; };
-		8D4BCF4C181304A4009FA9C0 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D4BCF4A181304A4009FA9C0 /* Main_iPad.storyboard */; };
-		8D4BCF4E181304A4009FA9C0 /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 8D4BCF4D181304A4009FA9C0 /* Shader.fsh */; };
-		8D4BCF50181304A4009FA9C0 /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 8D4BCF4F181304A4009FA9C0 /* Shader.vsh */; };
-		8D4BCF53181304A4009FA9C0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4BCF52181304A4009FA9C0 /* ViewController.m */; };
-		8D4BCF55181304A4009FA9C0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D4BCF54181304A4009FA9C0 /* Images.xcassets */; };
 		8D4BCF5C181304A4009FA9C0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4BCF5B181304A4009FA9C0 /* XCTest.framework */; };
 		8D4BCF5D181304A4009FA9C0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4BCF31181304A4009FA9C0 /* Foundation.framework */; };
 		8D4BCF5E181304A4009FA9C0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4BCF35181304A4009FA9C0 /* UIKit.framework */; };
@@ -40,6 +34,9 @@
 		8D7090671814307D00544C0C /* OGLTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7090571814307D00544C0C /* OGLTexture.m */; };
 		8D7090681814307D00544C0C /* OGLTween.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7090591814307D00544C0C /* OGLTween.m */; };
 		8D7090691814307D00544C0C /* OGLWorkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D70905B1814307D00544C0C /* OGLWorkQueue.m */; };
+		8D70906D1814334C00544C0C /* OGLTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D70906B1814334C00544C0C /* OGLTestViewController.m */; };
+		8D70906E1814334C00544C0C /* OGLTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D70906C1814334C00544C0C /* OGLTestViewController.xib */; };
+		8D7090701814339F00544C0C /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D70906F1814339F00544C0C /* MainWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,13 +62,6 @@
 		8D4BCF43181304A4009FA9C0 /* OGLEngineTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OGLEngineTest-Prefix.pch"; sourceTree = "<group>"; };
 		8D4BCF44181304A4009FA9C0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8D4BCF45181304A4009FA9C0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8D4BCF48181304A4009FA9C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		8D4BCF4B181304A4009FA9C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		8D4BCF4D181304A4009FA9C0 /* Shader.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.fsh; path = Shaders/Shader.fsh; sourceTree = "<group>"; };
-		8D4BCF4F181304A4009FA9C0 /* Shader.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; name = Shader.vsh; path = Shaders/Shader.vsh; sourceTree = "<group>"; };
-		8D4BCF51181304A4009FA9C0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8D4BCF52181304A4009FA9C0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		8D4BCF54181304A4009FA9C0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8D4BCF5A181304A4009FA9C0 /* OGLEngineTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OGLEngineTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D4BCF5B181304A4009FA9C0 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		8D4BCF63181304A4009FA9C0 /* OGLEngineTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OGLEngineTestTests-Info.plist"; sourceTree = "<group>"; };
@@ -104,6 +94,10 @@
 		8D7090591814307D00544C0C /* OGLTween.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLTween.m; sourceTree = "<group>"; };
 		8D70905A1814307D00544C0C /* OGLWorkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLWorkQueue.h; sourceTree = "<group>"; };
 		8D70905B1814307D00544C0C /* OGLWorkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLWorkQueue.m; sourceTree = "<group>"; };
+		8D70906A1814334C00544C0C /* OGLTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLTestViewController.h; sourceTree = "<group>"; };
+		8D70906B1814334C00544C0C /* OGLTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLTestViewController.m; sourceTree = "<group>"; };
+		8D70906C1814334C00544C0C /* OGLTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OGLTestViewController.xib; sourceTree = "<group>"; };
+		8D70906F1814339F00544C0C /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,13 +166,9 @@
 				8D70903F1814307D00544C0C /* OGLEngine */,
 				8D4BCF44181304A4009FA9C0 /* AppDelegate.h */,
 				8D4BCF45181304A4009FA9C0 /* AppDelegate.m */,
-				8D4BCF47181304A4009FA9C0 /* Main_iPhone.storyboard */,
-				8D4BCF4A181304A4009FA9C0 /* Main_iPad.storyboard */,
-				8D4BCF4D181304A4009FA9C0 /* Shader.fsh */,
-				8D4BCF4F181304A4009FA9C0 /* Shader.vsh */,
-				8D4BCF51181304A4009FA9C0 /* ViewController.h */,
-				8D4BCF52181304A4009FA9C0 /* ViewController.m */,
-				8D4BCF54181304A4009FA9C0 /* Images.xcassets */,
+				8D70906A1814334C00544C0C /* OGLTestViewController.h */,
+				8D70906B1814334C00544C0C /* OGLTestViewController.m */,
+				8D70906C1814334C00544C0C /* OGLTestViewController.xib */,
 				8D4BCF3C181304A4009FA9C0 /* Supporting Files */,
 			);
 			path = OGLEngineTest;
@@ -187,6 +177,7 @@
 		8D4BCF3C181304A4009FA9C0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8D70906F1814339F00544C0C /* MainWindow.xib */,
 				8D4BCF3D181304A4009FA9C0 /* OGLEngineTest-Info.plist */,
 				8D4BCF3E181304A4009FA9C0 /* InfoPlist.strings */,
 				8D4BCF41181304A4009FA9C0 /* main.m */,
@@ -322,12 +313,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D4BCF4E181304A4009FA9C0 /* Shader.fsh in Resources */,
-				8D4BCF4C181304A4009FA9C0 /* Main_iPad.storyboard in Resources */,
-				8D4BCF49181304A4009FA9C0 /* Main_iPhone.storyboard in Resources */,
-				8D4BCF55181304A4009FA9C0 /* Images.xcassets in Resources */,
+				8D70906E1814334C00544C0C /* OGLTestViewController.xib in Resources */,
 				8D4BCF40181304A4009FA9C0 /* InfoPlist.strings in Resources */,
-				8D4BCF50181304A4009FA9C0 /* Shader.vsh in Resources */,
+				8D7090701814339F00544C0C /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,9 +334,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D70906D1814334C00544C0C /* OGLTestViewController.m in Sources */,
 				8D70905D1814307D00544C0C /* OGLCamera.m in Sources */,
 				8D70905F1814307D00544C0C /* OGLDatabase.m in Sources */,
-				8D4BCF53181304A4009FA9C0 /* ViewController.m in Sources */,
 				8D7090691814307D00544C0C /* OGLWorkQueue.m in Sources */,
 				8D7090671814307D00544C0C /* OGLTexture.m in Sources */,
 				8D70905E1814307D00544C0C /* OGLContext.m in Sources */,
@@ -390,22 +378,6 @@
 				8D4BCF3F181304A4009FA9C0 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		8D4BCF47181304A4009FA9C0 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8D4BCF48181304A4009FA9C0 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		8D4BCF4A181304A4009FA9C0 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8D4BCF4B181304A4009FA9C0 /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		8D4BCF64181304A4009FA9C0 /* InfoPlist.strings */ = {

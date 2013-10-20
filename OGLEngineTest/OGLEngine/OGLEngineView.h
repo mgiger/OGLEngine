@@ -9,6 +9,7 @@
 
 @interface OGLEngineView : GLKView
 
+@property (nonatomic, assign)	CGFloat4			backColor;
 @property (nonatomic, strong)	OGLCamera*			camera;
 @property (nonatomic, strong)	OGLSceneObject*		rootObject;
 @property (nonatomic, strong)	OGLSpriteLayer*		userInterface;

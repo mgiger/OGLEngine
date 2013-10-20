@@ -56,7 +56,7 @@
 	[_modelViewStack addObject:[NSValue valueWithBytes:&xform objCType:@encode(CGFloat4x4)]];
 	_modelView = mult(xform, _modelView);
 	
-	[_modelViewStack addObject:[NSValue valueWithBytes:&_modelViewProjection objCType:@encode(CGFloat4x4)]];
+	[_modelViewProjectionStack addObject:[NSValue valueWithBytes:&_modelViewProjection objCType:@encode(CGFloat4x4)]];
 	_modelViewProjection = mult(_modelView, _projection);
 }
 
