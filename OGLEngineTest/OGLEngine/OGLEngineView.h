@@ -7,7 +7,7 @@
 #import <GLKit/GLKit.h>
 #import "OGLEngine.h"
 
-@interface OGLEngineView : GLKView <UIAccelerometerDelegate>
+@interface OGLEngineView : GLKView
 
 @property (nonatomic, strong)	OGLCamera*			camera;
 @property (nonatomic, strong)	OGLSceneObject*		rootObject;

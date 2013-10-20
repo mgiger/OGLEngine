@@ -34,7 +34,7 @@ static const int		c_texture_units		= 8;
 @end
 
 
-@interface HitInfo : NSObject
+@interface OGLHitInfo : NSObject
 
 @property (nonatomic, assign)	CGPoint			screenPos;		///< Screen location of mouse
 @property (nonatomic, assign)	CGRay			hitRay;			///< Ray being tested

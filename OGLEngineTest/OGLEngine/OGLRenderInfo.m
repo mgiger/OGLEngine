@@ -73,7 +73,7 @@
 
 
 
-@implementation HitInfo
+@implementation OGLHitInfo
 
 @end
 

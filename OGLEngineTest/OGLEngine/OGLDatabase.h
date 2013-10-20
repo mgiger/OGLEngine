@@ -4,7 +4,6 @@
 //	Copyright (c) 2013 Matt Giger. All rights reserved.
 //
 
-
 @class OGLSQLStatement;
 
 @interface OGLDatabase : NSObject

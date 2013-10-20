@@ -22,3 +22,34 @@
 - (void)uploadData:(OGLTextureData*)data intoTexture:(OGLTexture*)texture;
 
 @end
+
+@interface OGLBuffer : NSObject
+
+@property (nonatomic, assign)	BOOL		available;
+@property (nonatomic, assign)	BOOL		arrayBuffer;
+@property (nonatomic, assign)	NSUInteger	bufferID;
+
+- (id)initArrayBuffer;
+- (id)initIndexBuffer;
+- (void)uploadData:(NSData*)data;
+- (void)bind;
+- (void)unbind;
+
+@end
+
+@interface OGLVertexArray : NSObject
+
+- (void)bind;
+- (void)unbind;
+
+@end
+
+@interface OGLFramebuffer : NSObject
+
+@property (nonatomic, assign)	unsigned int	framebufferID;
+
+- (void)bind;
+- (void)unbind;
+- (BOOL)attachTexture:(OGLTexture*)texture;
+
+@end

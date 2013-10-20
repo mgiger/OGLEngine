@@ -7,7 +7,6 @@
 #import "OGLEngineView.h"
 #import "OGLCamera.h"
 #import "OGLSprite.h"
-#import "OGLCamera.h"
 #import "OGLRenderInfo.h"
 #import "OGLSceneObject.h"
 #import "OGLContext.h"
@@ -438,15 +437,6 @@ static CGSize			_touchPixelRadius;
 		default:
 			break;
 	}
-}
-
-
-- (void)accelerometer:(UIAccelerometer*)accelerometer didAccelerate:(UIAcceleration*)acceleration
-{
-//	float3 accel(acceleration.x, acceleration.y, acceleration.z);
-//	EBEvent* evt = [EBEvent eventWithType:e_acceleration];
-//	[evt setAcceleration:accel];
-//	[_camera handleEvent:evt];
 }
 
 @end

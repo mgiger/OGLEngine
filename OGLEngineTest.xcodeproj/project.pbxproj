@@ -27,25 +27,19 @@
 		8D4BCF66181304A4009FA9C0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D4BCF64181304A4009FA9C0 /* InfoPlist.strings */; };
 		8D4BCF68181304A4009FA9C0 /* OGLEngineTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D4BCF67181304A4009FA9C0 /* OGLEngineTestTests.m */; };
 		8D4BCF9A181426B2009FA9C0 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D4BCF99181426B2009FA9C0 /* libsqlite3.0.dylib */; };
-		8D5B809C181403FD00D10C01 /* OGLWorkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B809B181403FD00D10C01 /* OGLWorkQueue.m */; };
-		8D82F4C41813F6BF00DCC99F /* OGLAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F49D1813F6BF00DCC99F /* OGLAnnotation.m */; };
-		8D82F4C51813F6BF00DCC99F /* OGLAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F49F1813F6BF00DCC99F /* OGLAnnotationView.m */; };
-		8D82F4C61813F6BF00DCC99F /* OGLBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4A11813F6BF00DCC99F /* OGLBuffer.m */; };
-		8D82F4C71813F6BF00DCC99F /* OGLCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4A31813F6BF00DCC99F /* OGLCamera.m */; };
-		8D82F4C81813F6BF00DCC99F /* OGLContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4A51813F6BF00DCC99F /* OGLContext.m */; };
-		8D82F4C91813F6BF00DCC99F /* OGLDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4A71813F6BF00DCC99F /* OGLDatabase.m */; };
-		8D82F4CA1813F6BF00DCC99F /* OGLEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4A91813F6BF00DCC99F /* OGLEngine.m */; };
-		8D82F4CB1813F6BF00DCC99F /* OGLEngineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4AB1813F6BF00DCC99F /* OGLEngineView.m */; };
-		8D82F4CC1813F6BF00DCC99F /* OGLFramebuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4AD1813F6BF00DCC99F /* OGLFramebuffer.m */; };
-		8D82F4CE1813F6BF00DCC99F /* OGLLabel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4B11813F6BF00DCC99F /* OGLLabel.mm */; };
-		8D82F4CF1813F6BF00DCC99F /* OGLNetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4B31813F6BF00DCC99F /* OGLNetRequest.m */; };
-		8D82F4D01813F6BF00DCC99F /* OGLRenderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4B51813F6BF00DCC99F /* OGLRenderInfo.m */; };
-		8D82F4D11813F6BF00DCC99F /* OGLSceneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4B71813F6BF00DCC99F /* OGLSceneObject.m */; };
-		8D82F4D21813F6BF00DCC99F /* OGLShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4B91813F6BF00DCC99F /* OGLShader.m */; };
-		8D82F4D31813F6BF00DCC99F /* OGLSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4BB1813F6BF00DCC99F /* OGLSprite.m */; };
-		8D82F4D51813F6BF00DCC99F /* OGLTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4BF1813F6BF00DCC99F /* OGLTexture.m */; };
-		8D82F4D61813F6BF00DCC99F /* OGLTween.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4C11813F6BF00DCC99F /* OGLTween.m */; };
-		8D82F4D71813F6BF00DCC99F /* OGLVertexArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D82F4C31813F6BF00DCC99F /* OGLVertexArray.m */; };
+		8D70905D1814307D00544C0C /* OGLCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7090431814307D00544C0C /* OGLCamera.m */; };
+		8D70905E1814307D00544C0C /* OGLContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7090451814307D00544C0C /* OGLContext.m */; };
+		8D70905F1814307D00544C0C /* OGLDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7090471814307D00544C0C /* OGLDatabase.m */; };
+		8D7090601814307D00544C0C /* OGLEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7090491814307D00544C0C /* OGLEngine.m */; };
+		8D7090611814307D00544C0C /* OGLEngineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D70904B1814307D00544C0C /* OGLEngineView.m */; };
+		8D7090621814307D00544C0C /* OGLNetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D70904D1814307D00544C0C /* OGLNetRequest.m */; };
+		8D7090631814307D00544C0C /* OGLRenderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D70904F1814307D00544C0C /* OGLRenderInfo.m */; };
+		8D7090641814307D00544C0C /* OGLSceneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7090511814307D00544C0C /* OGLSceneObject.m */; };
+		8D7090651814307D00544C0C /* OGLShader.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7090531814307D00544C0C /* OGLShader.m */; };
+		8D7090661814307D00544C0C /* OGLSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7090551814307D00544C0C /* OGLSprite.m */; };
+		8D7090671814307D00544C0C /* OGLTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7090571814307D00544C0C /* OGLTexture.m */; };
+		8D7090681814307D00544C0C /* OGLTween.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7090591814307D00544C0C /* OGLTween.m */; };
+		8D7090691814307D00544C0C /* OGLWorkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D70905B1814307D00544C0C /* OGLWorkQueue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,44 +78,32 @@
 		8D4BCF65181304A4009FA9C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8D4BCF67181304A4009FA9C0 /* OGLEngineTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OGLEngineTestTests.m; sourceTree = "<group>"; };
 		8D4BCF99181426B2009FA9C0 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		8D5B809A181403FD00D10C01 /* OGLWorkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLWorkQueue.h; sourceTree = "<group>"; };
-		8D5B809B181403FD00D10C01 /* OGLWorkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLWorkQueue.m; sourceTree = "<group>"; };
-		8D82F49C1813F6BF00DCC99F /* OGLAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLAnnotation.h; sourceTree = "<group>"; };
-		8D82F49D1813F6BF00DCC99F /* OGLAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLAnnotation.m; sourceTree = "<group>"; };
-		8D82F49E1813F6BF00DCC99F /* OGLAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLAnnotationView.h; sourceTree = "<group>"; };
-		8D82F49F1813F6BF00DCC99F /* OGLAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLAnnotationView.m; sourceTree = "<group>"; };
-		8D82F4A01813F6BF00DCC99F /* OGLBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLBuffer.h; sourceTree = "<group>"; };
-		8D82F4A11813F6BF00DCC99F /* OGLBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLBuffer.m; sourceTree = "<group>"; };
-		8D82F4A21813F6BF00DCC99F /* OGLCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLCamera.h; sourceTree = "<group>"; };
-		8D82F4A31813F6BF00DCC99F /* OGLCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLCamera.m; sourceTree = "<group>"; };
-		8D82F4A41813F6BF00DCC99F /* OGLContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLContext.h; sourceTree = "<group>"; };
-		8D82F4A51813F6BF00DCC99F /* OGLContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLContext.m; sourceTree = "<group>"; };
-		8D82F4A61813F6BF00DCC99F /* OGLDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLDatabase.h; sourceTree = "<group>"; };
-		8D82F4A71813F6BF00DCC99F /* OGLDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLDatabase.m; sourceTree = "<group>"; };
-		8D82F4A81813F6BF00DCC99F /* OGLEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLEngine.h; sourceTree = "<group>"; };
-		8D82F4A91813F6BF00DCC99F /* OGLEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLEngine.m; sourceTree = "<group>"; };
-		8D82F4AA1813F6BF00DCC99F /* OGLEngineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLEngineView.h; sourceTree = "<group>"; };
-		8D82F4AB1813F6BF00DCC99F /* OGLEngineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLEngineView.m; sourceTree = "<group>"; };
-		8D82F4AC1813F6BF00DCC99F /* OGLFramebuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLFramebuffer.h; sourceTree = "<group>"; };
-		8D82F4AD1813F6BF00DCC99F /* OGLFramebuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLFramebuffer.m; sourceTree = "<group>"; };
-		8D82F4B01813F6BF00DCC99F /* OGLLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLLabel.h; sourceTree = "<group>"; };
-		8D82F4B11813F6BF00DCC99F /* OGLLabel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OGLLabel.mm; sourceTree = "<group>"; };
-		8D82F4B21813F6BF00DCC99F /* OGLNetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLNetRequest.h; sourceTree = "<group>"; };
-		8D82F4B31813F6BF00DCC99F /* OGLNetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLNetRequest.m; sourceTree = "<group>"; };
-		8D82F4B41813F6BF00DCC99F /* OGLRenderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLRenderInfo.h; sourceTree = "<group>"; };
-		8D82F4B51813F6BF00DCC99F /* OGLRenderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLRenderInfo.m; sourceTree = "<group>"; };
-		8D82F4B61813F6BF00DCC99F /* OGLSceneObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLSceneObject.h; sourceTree = "<group>"; };
-		8D82F4B71813F6BF00DCC99F /* OGLSceneObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLSceneObject.m; sourceTree = "<group>"; };
-		8D82F4B81813F6BF00DCC99F /* OGLShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLShader.h; sourceTree = "<group>"; };
-		8D82F4B91813F6BF00DCC99F /* OGLShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLShader.m; sourceTree = "<group>"; };
-		8D82F4BA1813F6BF00DCC99F /* OGLSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLSprite.h; sourceTree = "<group>"; };
-		8D82F4BB1813F6BF00DCC99F /* OGLSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLSprite.m; sourceTree = "<group>"; };
-		8D82F4BE1813F6BF00DCC99F /* OGLTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLTexture.h; sourceTree = "<group>"; };
-		8D82F4BF1813F6BF00DCC99F /* OGLTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLTexture.m; sourceTree = "<group>"; };
-		8D82F4C01813F6BF00DCC99F /* OGLTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLTween.h; sourceTree = "<group>"; };
-		8D82F4C11813F6BF00DCC99F /* OGLTween.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLTween.m; sourceTree = "<group>"; };
-		8D82F4C21813F6BF00DCC99F /* OGLVertexArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLVertexArray.h; sourceTree = "<group>"; };
-		8D82F4C31813F6BF00DCC99F /* OGLVertexArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLVertexArray.m; sourceTree = "<group>"; };
+		8D7090421814307D00544C0C /* OGLCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLCamera.h; sourceTree = "<group>"; };
+		8D7090431814307D00544C0C /* OGLCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLCamera.m; sourceTree = "<group>"; };
+		8D7090441814307D00544C0C /* OGLContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLContext.h; sourceTree = "<group>"; };
+		8D7090451814307D00544C0C /* OGLContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLContext.m; sourceTree = "<group>"; };
+		8D7090461814307D00544C0C /* OGLDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLDatabase.h; sourceTree = "<group>"; };
+		8D7090471814307D00544C0C /* OGLDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLDatabase.m; sourceTree = "<group>"; };
+		8D7090481814307D00544C0C /* OGLEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLEngine.h; sourceTree = "<group>"; };
+		8D7090491814307D00544C0C /* OGLEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLEngine.m; sourceTree = "<group>"; };
+		8D70904A1814307D00544C0C /* OGLEngineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLEngineView.h; sourceTree = "<group>"; };
+		8D70904B1814307D00544C0C /* OGLEngineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLEngineView.m; sourceTree = "<group>"; };
+		8D70904C1814307D00544C0C /* OGLNetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLNetRequest.h; sourceTree = "<group>"; };
+		8D70904D1814307D00544C0C /* OGLNetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLNetRequest.m; sourceTree = "<group>"; };
+		8D70904E1814307D00544C0C /* OGLRenderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLRenderInfo.h; sourceTree = "<group>"; };
+		8D70904F1814307D00544C0C /* OGLRenderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLRenderInfo.m; sourceTree = "<group>"; };
+		8D7090501814307D00544C0C /* OGLSceneObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLSceneObject.h; sourceTree = "<group>"; };
+		8D7090511814307D00544C0C /* OGLSceneObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLSceneObject.m; sourceTree = "<group>"; };
+		8D7090521814307D00544C0C /* OGLShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLShader.h; sourceTree = "<group>"; };
+		8D7090531814307D00544C0C /* OGLShader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLShader.m; sourceTree = "<group>"; };
+		8D7090541814307D00544C0C /* OGLSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLSprite.h; sourceTree = "<group>"; };
+		8D7090551814307D00544C0C /* OGLSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLSprite.m; sourceTree = "<group>"; };
+		8D7090561814307D00544C0C /* OGLTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLTexture.h; sourceTree = "<group>"; };
+		8D7090571814307D00544C0C /* OGLTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLTexture.m; sourceTree = "<group>"; };
+		8D7090581814307D00544C0C /* OGLTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLTween.h; sourceTree = "<group>"; };
+		8D7090591814307D00544C0C /* OGLTween.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLTween.m; sourceTree = "<group>"; };
+		8D70905A1814307D00544C0C /* OGLWorkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLWorkQueue.h; sourceTree = "<group>"; };
+		8D70905B1814307D00544C0C /* OGLWorkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLWorkQueue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +169,7 @@
 		8D4BCF3B181304A4009FA9C0 /* OGLEngineTest */ = {
 			isa = PBXGroup;
 			children = (
-				8D82F49B1813F6BF00DCC99F /* OGLEngine */,
+				8D70903F1814307D00544C0C /* OGLEngine */,
 				8D4BCF44181304A4009FA9C0 /* AppDelegate.h */,
 				8D4BCF45181304A4009FA9C0 /* AppDelegate.m */,
 				8D4BCF47181304A4009FA9C0 /* Main_iPhone.storyboard */,
@@ -231,47 +213,35 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8D82F49B1813F6BF00DCC99F /* OGLEngine */ = {
+		8D70903F1814307D00544C0C /* OGLEngine */ = {
 			isa = PBXGroup;
 			children = (
-				8D82F49C1813F6BF00DCC99F /* OGLAnnotation.h */,
-				8D82F49D1813F6BF00DCC99F /* OGLAnnotation.m */,
-				8D82F49E1813F6BF00DCC99F /* OGLAnnotationView.h */,
-				8D82F49F1813F6BF00DCC99F /* OGLAnnotationView.m */,
-				8D82F4A01813F6BF00DCC99F /* OGLBuffer.h */,
-				8D82F4A11813F6BF00DCC99F /* OGLBuffer.m */,
-				8D82F4A21813F6BF00DCC99F /* OGLCamera.h */,
-				8D82F4A31813F6BF00DCC99F /* OGLCamera.m */,
-				8D82F4A41813F6BF00DCC99F /* OGLContext.h */,
-				8D82F4A51813F6BF00DCC99F /* OGLContext.m */,
-				8D82F4A61813F6BF00DCC99F /* OGLDatabase.h */,
-				8D82F4A71813F6BF00DCC99F /* OGLDatabase.m */,
-				8D82F4A81813F6BF00DCC99F /* OGLEngine.h */,
-				8D82F4A91813F6BF00DCC99F /* OGLEngine.m */,
-				8D82F4AA1813F6BF00DCC99F /* OGLEngineView.h */,
-				8D82F4AB1813F6BF00DCC99F /* OGLEngineView.m */,
-				8D82F4AC1813F6BF00DCC99F /* OGLFramebuffer.h */,
-				8D82F4AD1813F6BF00DCC99F /* OGLFramebuffer.m */,
-				8D82F4B01813F6BF00DCC99F /* OGLLabel.h */,
-				8D82F4B11813F6BF00DCC99F /* OGLLabel.mm */,
-				8D82F4B21813F6BF00DCC99F /* OGLNetRequest.h */,
-				8D82F4B31813F6BF00DCC99F /* OGLNetRequest.m */,
-				8D82F4B41813F6BF00DCC99F /* OGLRenderInfo.h */,
-				8D82F4B51813F6BF00DCC99F /* OGLRenderInfo.m */,
-				8D82F4B61813F6BF00DCC99F /* OGLSceneObject.h */,
-				8D82F4B71813F6BF00DCC99F /* OGLSceneObject.m */,
-				8D82F4B81813F6BF00DCC99F /* OGLShader.h */,
-				8D82F4B91813F6BF00DCC99F /* OGLShader.m */,
-				8D82F4BA1813F6BF00DCC99F /* OGLSprite.h */,
-				8D82F4BB1813F6BF00DCC99F /* OGLSprite.m */,
-				8D82F4BE1813F6BF00DCC99F /* OGLTexture.h */,
-				8D82F4BF1813F6BF00DCC99F /* OGLTexture.m */,
-				8D82F4C01813F6BF00DCC99F /* OGLTween.h */,
-				8D82F4C11813F6BF00DCC99F /* OGLTween.m */,
-				8D82F4C21813F6BF00DCC99F /* OGLVertexArray.h */,
-				8D82F4C31813F6BF00DCC99F /* OGLVertexArray.m */,
-				8D5B809A181403FD00D10C01 /* OGLWorkQueue.h */,
-				8D5B809B181403FD00D10C01 /* OGLWorkQueue.m */,
+				8D7090421814307D00544C0C /* OGLCamera.h */,
+				8D7090431814307D00544C0C /* OGLCamera.m */,
+				8D7090441814307D00544C0C /* OGLContext.h */,
+				8D7090451814307D00544C0C /* OGLContext.m */,
+				8D7090461814307D00544C0C /* OGLDatabase.h */,
+				8D7090471814307D00544C0C /* OGLDatabase.m */,
+				8D7090481814307D00544C0C /* OGLEngine.h */,
+				8D7090491814307D00544C0C /* OGLEngine.m */,
+				8D70904A1814307D00544C0C /* OGLEngineView.h */,
+				8D70904B1814307D00544C0C /* OGLEngineView.m */,
+				8D70904C1814307D00544C0C /* OGLNetRequest.h */,
+				8D70904D1814307D00544C0C /* OGLNetRequest.m */,
+				8D70904E1814307D00544C0C /* OGLRenderInfo.h */,
+				8D70904F1814307D00544C0C /* OGLRenderInfo.m */,
+				8D7090501814307D00544C0C /* OGLSceneObject.h */,
+				8D7090511814307D00544C0C /* OGLSceneObject.m */,
+				8D7090521814307D00544C0C /* OGLShader.h */,
+				8D7090531814307D00544C0C /* OGLShader.m */,
+				8D7090541814307D00544C0C /* OGLSprite.h */,
+				8D7090551814307D00544C0C /* OGLSprite.m */,
+				8D7090561814307D00544C0C /* OGLTexture.h */,
+				8D7090571814307D00544C0C /* OGLTexture.m */,
+				8D7090581814307D00544C0C /* OGLTween.h */,
+				8D7090591814307D00544C0C /* OGLTween.m */,
+				8D70905A1814307D00544C0C /* OGLWorkQueue.h */,
+				8D70905B1814307D00544C0C /* OGLWorkQueue.m */,
 			);
 			path = OGLEngine;
 			sourceTree = "<group>";
@@ -376,28 +346,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D82F4D51813F6BF00DCC99F /* OGLTexture.m in Sources */,
-				8D82F4C51813F6BF00DCC99F /* OGLAnnotationView.m in Sources */,
-				8D82F4D71813F6BF00DCC99F /* OGLVertexArray.m in Sources */,
+				8D70905D1814307D00544C0C /* OGLCamera.m in Sources */,
+				8D70905F1814307D00544C0C /* OGLDatabase.m in Sources */,
 				8D4BCF53181304A4009FA9C0 /* ViewController.m in Sources */,
-				8D82F4CC1813F6BF00DCC99F /* OGLFramebuffer.m in Sources */,
-				8D82F4D31813F6BF00DCC99F /* OGLSprite.m in Sources */,
-				8D82F4CA1813F6BF00DCC99F /* OGLEngine.m in Sources */,
-				8D82F4D61813F6BF00DCC99F /* OGLTween.m in Sources */,
-				8D82F4C71813F6BF00DCC99F /* OGLCamera.m in Sources */,
-				8D5B809C181403FD00D10C01 /* OGLWorkQueue.m in Sources */,
-				8D82F4C91813F6BF00DCC99F /* OGLDatabase.m in Sources */,
-				8D82F4CB1813F6BF00DCC99F /* OGLEngineView.m in Sources */,
-				8D82F4D01813F6BF00DCC99F /* OGLRenderInfo.m in Sources */,
-				8D82F4C41813F6BF00DCC99F /* OGLAnnotation.m in Sources */,
+				8D7090691814307D00544C0C /* OGLWorkQueue.m in Sources */,
+				8D7090671814307D00544C0C /* OGLTexture.m in Sources */,
+				8D70905E1814307D00544C0C /* OGLContext.m in Sources */,
+				8D7090651814307D00544C0C /* OGLShader.m in Sources */,
+				8D7090661814307D00544C0C /* OGLSprite.m in Sources */,
+				8D7090631814307D00544C0C /* OGLRenderInfo.m in Sources */,
 				8D4BCF46181304A4009FA9C0 /* AppDelegate.m in Sources */,
-				8D82F4D21813F6BF00DCC99F /* OGLShader.m in Sources */,
-				8D82F4D11813F6BF00DCC99F /* OGLSceneObject.m in Sources */,
-				8D82F4C61813F6BF00DCC99F /* OGLBuffer.m in Sources */,
-				8D82F4C81813F6BF00DCC99F /* OGLContext.m in Sources */,
+				8D7090641814307D00544C0C /* OGLSceneObject.m in Sources */,
+				8D7090681814307D00544C0C /* OGLTween.m in Sources */,
 				8D4BCF42181304A4009FA9C0 /* main.m in Sources */,
-				8D82F4CF1813F6BF00DCC99F /* OGLNetRequest.m in Sources */,
-				8D82F4CE1813F6BF00DCC99F /* OGLLabel.mm in Sources */,
+				8D7090601814307D00544C0C /* OGLEngine.m in Sources */,
+				8D7090611814307D00544C0C /* OGLEngineView.m in Sources */,
+				8D7090621814307D00544C0C /* OGLNetRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

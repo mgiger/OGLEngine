@@ -119,18 +119,16 @@
 				CGRay hitRay = multRay(r, invgx);
 				if(cubeRayInersect(obj.bbox, hitRay, &objectPos))
 				{
-					HitInfo* hit = [[HitInfo alloc] init];
-					[hit setHitRay:hitRay];
-					[hit setHitObject:obj];
-					[hit setObjectPos:objectPos];
-					
 					// transform the local hit point to world coords and determine distance
 					CGFloat3 wpos = multVec3(gxform, objectPos);
-					[hit setWorldPos:wpos];
 					CGFloat dist = length3(CGFloat3Make(wpos.x - r.origin.x, wpos.y - r.origin.y, wpos.z - r.origin.z));
-					hit.distance = dist;
 					
-					// add it to the list of hits
+					OGLHitInfo* hit = [[OGLHitInfo alloc] init];
+					hit.hitRay = hitRay;
+					hit.hitObject = obj;
+					hit.objectPos = objectPos;
+					hit.worldPos = wpos;
+					hit.distance = dist;
 					[hits addObject:hit];
 				}
 			}
@@ -160,7 +158,6 @@
 {
 	CGFloat3 vec0 = multVec3(_transform, CGFloat3Make(0, 0, 0));
 	CGFloat3 vec1 = multVec3(obj.transform, CGFloat3Make(0, 0, 0));
-//	return (vec0.z < vec1.z) ? NSOrderedAscending : (vec0.z > vec1.z ? NSOrderedDescending : NSOrderedSame);
 	return (vec0.z > vec1.z) ? NSOrderedAscending : (vec0.z < vec1.z ? NSOrderedDescending : NSOrderedSame);
 }
 

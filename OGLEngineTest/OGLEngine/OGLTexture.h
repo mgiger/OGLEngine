@@ -6,7 +6,6 @@
 
 #import "OGLEngine.h"
 
-
 @interface OGLTexture : NSObject
 
 @property (nonatomic, assign)	BOOL	available;

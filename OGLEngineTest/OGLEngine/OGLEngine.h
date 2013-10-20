@@ -16,8 +16,8 @@
 //	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#ifndef OGLEngineTest_OGLEngine_h
-#define OGLEngineTest_OGLEngine_h
+#ifndef _OGLEngine_
+#define _OGLEngine_
 
 struct CGFloat3 {
 	CGFloat x;
@@ -92,6 +92,7 @@ typedef struct CGFrustum CGFrustum;
 @class OGLSceneObject;
 @class OGLShader;
 @class OGLSpriteLayer;
+@class OGLAnnotation;
 @class OGLAnnotationView;
 
 typedef void (^OGLSimpleBlock)(void);

@@ -6,15 +6,14 @@
 
 #import "OGLSprite.h"
 #import "OGLRenderInfo.h"
-#import "OGLBuffer.h"
 #import "OGLCamera.h"
 #import "OGLContext.h"
 #import "OGLTexture.h"
-#import "OGLVertexArray.h"
 #import "OGLShader.h"
 #import "OGLNetRequest.h"
 #import "OGLDatabase.h"
 #import "OGLWorkQueue.h"
+#import "OGLTween.h"
 
 static NSMutableDictionary*		_iconTextures;
 
@@ -389,5 +388,193 @@ static NSMutableDictionary*		_iconTextures;
 	[super render:info];
 }
 
+
+@end
+
+
+
+static UILabel*		_sharedLabel;
+
+@implementation OGLLabel
+
+- (id)init
+{
+	if(self = [super init])
+	{
+		self.hasGeometry = YES;
+		_font = [UIFont boldSystemFontOfSize:16];
+	}
+	return self;
+}
+
+- (void)setText:(NSString*)text
+{
+	_text = text;
+	[self performSelectorOnMainThread:@selector(renderText) withObject:nil waitUntilDone:NO];
+}
+
+- (void)renderText
+{
+	if([_text length])
+	{
+		CGRect lbounds = [_text boundingRectWithSize:CGSizeMake(_maxWidth > 0 ? _maxWidth : 10000, 10000)
+											 options:NSStringDrawingUsesLineFragmentOrigin
+										  attributes:@{NSFontAttributeName:_font}
+											 context:nil];
+		
+		if(!_sharedLabel)
+		{
+			_sharedLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, lbounds.size.width, lbounds.size.height)];
+			_sharedLabel.backgroundColor = [UIColor clearColor];
+			_sharedLabel.opaque = NO;
+			_sharedLabel.textAlignment = NSTextAlignmentCenter;
+			_sharedLabel.font = _font;
+			_sharedLabel.numberOfLines = 0;
+			_sharedLabel.shadowColor = [UIColor colorWithWhite:0 alpha:0.75];
+			_sharedLabel.shadowOffset = CGSizeMake(1.5, 1.5);
+		}
+		else
+			_sharedLabel.frame = CGRectMake(0, 0, lbounds.size.width, lbounds.size.height);
+		
+		_sharedLabel.textColor = [UIColor colorWithRed:self.color.x green:self.color.y blue:self.color.z alpha:1.0];
+		_sharedLabel.text = _text;
+		[_sharedLabel layoutIfNeeded];
+		
+		OGLTexture* texture = nil;
+		CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+		if(colorSpace)
+		{
+			CGSize size = CGSizeMake(ceilf(lbounds.size.width * _ScreenScale), ceilf(lbounds.size.height * _ScreenScale));
+			NSData* data = [NSMutableData dataWithLength:size.height * size.width * 4];
+			CGContextRef context = CGBitmapContextCreate((char*)[data bytes], size.width, size.height, 8, 4 * size.width, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+			if(context)
+			{
+				CGContextTranslateCTM(context, 0, size.height);
+				CGContextScaleCTM(context, _ScreenScale, -_ScreenScale);
+				
+				texture = [[OGLTexture alloc] init];
+				texture.width = size.width;
+				texture.height = size.height;
+				
+				[_sharedLabel.layer renderInContext:context];
+				
+				if([[NSThread currentThread] isMainThread])
+				{
+					[texture uploadData:[OGLTextureData dataWithData:data size:size depth:4]];
+					texture.available = YES;
+				}
+				else
+				{
+					[[OGLContext worker] uploadData:[OGLTextureData dataWithData:data size:size depth:4] intoTexture:texture];
+				}
+				
+				CGContextRelease(context);
+			}
+			CGColorSpaceRelease(colorSpace);
+		}
+		
+		if(texture)
+		{
+			[self setGLTexture:texture centered:NO];
+		}
+		
+		self.visible = YES;
+	}
+	else
+	{
+		self.visible = NO;
+	}
+}
+
+@end
+
+
+static OGLAnnotation*	_current = nil;
+
+@implementation OGLAnnotation
+
++ (void)closeCurrentAnnotaion
+{
+	if(_current)
+	{
+		if(_current.close)
+			_current.close();
+		_current = nil;
+	}
+}
+
+- (id)initWithAnnotationView:(OGLAnnotationView*)view action:(OGLSimpleBlock)action close:(OGLSimpleBlock)close
+{
+	if(self = [super init])
+	{
+		_scaleFactor = 1.0;
+		_current = self;
+		self.action = action;
+		self.close = close;
+		
+		__weak OGLAnnotation* weak_self = self;
+		[self setGLTexture:[view glTexture] centered:NO];
+		if(_action)
+		{
+			self.tapEventHandler = ^(UITapGestureRecognizer* gesture)
+			{
+				weak_self.action();
+				return weak_self;
+			};
+		}
+		
+		self.offset = CGFloat3Make(-view.bounds.size.width*0.5, -view.bounds.size.height, 20);
+		[self updateTransform];
+		
+		[OGLTween tweenFrom:0 to:1 method:tweenOutElastic duration:.7 delay:0 identifier:nil
+				 animations:^(float value) {
+					 float v = value * _scaleFactor;
+					 self.transform = mult(scale4x4(v, v, v), translationVec4x4(CGFloat3Mult(self.offset, v)));
+				 }
+				 completion:^(BOOL finished) {
+					 self.scale = CGFloat3Make(_scaleFactor, _scaleFactor, _scaleFactor);
+					 self.offset = CGFloat3Mult(self.offset, _scaleFactor);
+				 }
+		 ];
+	}
+	return self;
+}
+
+- (void)setViewTexture:(OGLAnnotationView*)view
+{
+	[self setGLTexture:[view glTexture] centered:NO];
+}
+
+@end
+
+
+@implementation OGLAnnotationView
+
++ (id)view
+{
+	NSArray *objects = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil];
+	for (id object in objects)
+	{
+		NSAssert([object isKindOfClass:[self class]], @"View is of wrong type!");
+		[object setNeedsLayout];
+		return object;
+	}
+	return nil;
+}
+
+- (OGLTexture*)glTexture
+{
+	[self layoutIfNeeded];
+	
+	UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, [[UIScreen mainScreen] scale]);
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage* img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+	
+	OGLTexture* texture = [[OGLTexture alloc] init];
+	[texture uploadData:[OGLTextureData dataWithImage:img.CGImage]];
+	texture.available = YES;
+	return texture;
+}
 
 @end

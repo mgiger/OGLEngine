@@ -37,3 +37,35 @@
 - (void)render:(OGLRenderInfo*)info;
 
 @end
+
+
+@interface OGLLabel : OGLSprite
+
+@property (nonatomic, assign)	int				maxWidth;
+@property (nonatomic, strong)	NSString*		text;
+@property (nonatomic, strong)	UIFont*			font;
+
+@end
+
+
+@interface OGLAnnotation : OGLSprite
+
+@property (nonatomic, copy)		OGLSimpleBlock		action;
+@property (nonatomic, copy)		OGLSimpleBlock		close;
+@property (nonatomic, assign)	CGFloat				scaleFactor;
+
++ (void)closeCurrentAnnotaion;
+
+- (id)initWithAnnotationView:(OGLAnnotationView*)view action:(OGLSimpleBlock)action close:(OGLSimpleBlock)close;
+- (void)setViewTexture:(OGLAnnotationView*)view;
+
+@end
+
+
+@interface OGLAnnotationView : UIView
+
++ (id)view;
+
+- (OGLTexture*)glTexture;
+
+@end
