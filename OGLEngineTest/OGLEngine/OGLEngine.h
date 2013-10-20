@@ -86,12 +86,14 @@ typedef struct CGFrustum CGFrustum;
 @class OGLContext;
 @class OGLFramebuffer;
 @class OGLTexture;
+@class OGLTextureData;
 @class OGLVertexArray;
 @class OGLEngineView;
 @class OGLRenderInfo;
 @class OGLSceneObject;
 @class OGLShader;
 @class OGLSpriteLayer;
+@class OGLAnnotationView;
 
 typedef void (^OGLSimpleBlock)(void);
 typedef OGLSceneObject* (^TapGestureBlock)(UITapGestureRecognizer*);

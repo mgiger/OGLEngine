@@ -176,7 +176,6 @@ static NSMutableDictionary*		_currentTweens;
 		
 		// NSTimer retains the target (us), have it release us when the animation is done
 		NSDate* fireDate = [NSDate dateWithTimeIntervalSinceNow:delay];
-
 		NSTimer* t = [[NSTimer alloc] initWithFireDate:fireDate interval:duration / cAnimationGranularity
 												target:self selector:@selector(update:)
 											  userInfo:nil repeats:YES];
