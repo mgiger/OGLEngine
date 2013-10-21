@@ -479,7 +479,7 @@ OGLRay multRay(OGLRay r, OGLFloat4x4 m)
 	return OGLRayMake(o, normalVec3(OGLFloat3Make(d.x, d.y, d.z)));
 }
 
-BOOL cubeRayInersect(OGLCube cube, OGLRay ray, OGLFloat3* hitLocation)
+BOOL cubeRayInersect(OGLBox cube, OGLRay ray, OGLFloat3* hitLocation)
 {
 	enum { q_left = -1, q_middle = 0, q_right };
 	

@@ -39,6 +39,7 @@
 		8D7090701814339F00544C0C /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D70906F1814339F00544C0C /* MainWindow.xib */; };
 		8D7090731814380700544C0C /* gearIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D7090711814380700544C0C /* gearIcon.png */; };
 		8D7090741814380700544C0C /* gearIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D7090721814380700544C0C /* gearIcon@2x.png */; };
+		8D7090771814586300544C0C /* OGLCube.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D7090761814586300544C0C /* OGLCube.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,8 @@
 		8D70906F1814339F00544C0C /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		8D7090711814380700544C0C /* gearIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gearIcon.png; sourceTree = "<group>"; };
 		8D7090721814380700544C0C /* gearIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gearIcon@2x.png"; sourceTree = "<group>"; };
+		8D7090751814586300544C0C /* OGLCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OGLCube.h; sourceTree = "<group>"; };
+		8D7090761814586300544C0C /* OGLCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OGLCube.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +242,8 @@
 				8D7090591814307D00544C0C /* OGLTween.m */,
 				8D70905A1814307D00544C0C /* OGLWorkQueue.h */,
 				8D70905B1814307D00544C0C /* OGLWorkQueue.m */,
+				8D7090751814586300544C0C /* OGLCube.h */,
+				8D7090761814586300544C0C /* OGLCube.m */,
 			);
 			path = OGLEngine;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 				8D7090661814307D00544C0C /* OGLSprite.m in Sources */,
 				8D7090631814307D00544C0C /* OGLRenderInfo.m in Sources */,
 				8D4BCF46181304A4009FA9C0 /* AppDelegate.m in Sources */,
+				8D7090771814586300544C0C /* OGLCube.m in Sources */,
 				8D7090641814307D00544C0C /* OGLSceneObject.m in Sources */,
 				8D7090681814307D00544C0C /* OGLTween.m in Sources */,
 				8D4BCF42181304A4009FA9C0 /* main.m in Sources */,

@@ -47,11 +47,11 @@ struct OGLQuaternion {
 };
 typedef struct OGLQuaternion OGLQuaternion;
 
-struct OGLCube {
+struct OGLBox {
 	OGLFloat3	minc;
 	OGLFloat3	maxc;
 };
-typedef struct OGLCube OGLCube;
+typedef struct OGLBox OGLBox;
 
 struct OGLRay {
 	OGLFloat3	origin;
@@ -129,7 +129,7 @@ OGLFloat4x4 inverse(OGLFloat4x4 m);
 CGRect multRect(OGLFloat4x4 m, CGRect r);
 
 OGLRay multRay(OGLRay r, OGLFloat4x4 m);
-BOOL cubeRayInersect(OGLCube cube, OGLRay ray, OGLFloat3* hitLocation);
+BOOL cubeRayInersect(OGLBox cube, OGLRay ray, OGLFloat3* hitLocation);
 
 
 extern float			_ScreenScale;

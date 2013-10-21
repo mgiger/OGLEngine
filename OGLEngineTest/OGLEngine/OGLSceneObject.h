@@ -10,7 +10,7 @@
 
 @property (nonatomic, assign)	BOOL				visible;
 @property (nonatomic, assign)	BOOL				hasGeometry;
-@property (nonatomic, assign)	OGLCube				bbox;
+@property (nonatomic, assign)	OGLBox				bbox;
 @property (nonatomic, assign)	OGLFloat4x4			transform;
 @property (nonatomic, assign)	CGRect				bounds;
 @property (nonatomic, strong)	NSMutableArray*		children;
